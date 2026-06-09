@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức</title>
+    <link rel="stylesheet" href="styleheader&footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+.feature {
+  max-width: 1200px;
+  width: 100%;
+  padding:14px 16px;
+  margin: auto;
+}
+.breadcrumb {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #777;
+}
+.breadcrumb .current a {
+  color:#0047C6;
+  font-weight: 500;
+}
+.container{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+.new-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.card{
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.card:hover{
+    transform: translateY(-5px);
+}
+.card a{
+    text-decoration: none;
+    color: inherit;
+}
+.card img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.card h4{
+    font-size: 18px;
+    padding: 10px;
+}
+.card p{
+    padding: 0 10px;
+    color: #555;
+    font-size: 14px;
+}
+.card span {
+  display: block;
+  padding: 10px;
+  color: #888;
+  font-size: 13px;
+}
+.top-bar {
+  display: flex;
+  justify-content:flex-end;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.tools {
+  display: flex;
+  gap: 10px;
+}
+.tools input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.tools select {
+  padding: 8px;
+  border-radius: 6px;
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    gap: 10px;
+}
+.pagination a {
+    display: inline-block;
+    margin: 0 ;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: #0047C6;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+.pagination a:hover {
+    background: #0047C6;
+    color: white;
+}
+.pagination a.active {
+    background: #0047C6;
+    color: white;
+    border-color: #0047C6;
+}
+
+@media(max-width: 768px){
+    .new-list{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+@media (max-width:480px){
+    .new-list{
+        grid-template-columns: 1fr;
+    }
+    .top-bar{
+        display:none;
+    }
+}
+    </style>
+</head>
+<body>
+        <!-- top header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <span>📍 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</span>
+                <span>📞 024 3775 9907</span>
+                <span>✉ vwa@vwa.edu.vn</span>
+            </div>
+            <div class="top-right">
+                <div class="find-top">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>⌕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <div class="logo">
+                    <img src="logo hvpnvn xanh.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <span id="hv">HỌC VIỆN</span>
+                    <span id="pnvn">PHỤ NỮ VIỆT NAM</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="main-menu">
+                <li><a href="index.html" >Trang chủ</a></li>
+                <li>
+                    <a href="Gioithieu.html">Giới thiệu <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Gioithieu.html#tongquan">Tổng quan về học viện</a></li>
+                        <li><a href="Gioithieu.html#lichsu">Lịch sử hình thành</a></li>
+                        <li><a href="Gioithieu.html#sumenh">Sứ mệnh - Tầm nhìn</a></li>
+                        <li><a href="Gioithieu.html#cocau">Cơ cấu tổ chức</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Daotao.html">Đào tạo <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="Daotaodaihoc.html">Đào tạo Đại học <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="sub-menu">
+                                <li><a href="Daotaodaihoc.html#cntt">Công nghệ thông tin</a></li>
+                                <li><a href="Daotaodaihoc.html#ttdpt">Truyền thông đa phương tiện</a></li>
+                                <li><a href="Daotaodaihoc.html#ctxh">Công tác xã hội</a></li>
+                                <li><a href="Daotaodaihoc.html#tamly">Tâm lý học</a></li>
+                                <li><a href="Daotaodaihoc.html#luatkt">Luật kinh tế</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Daotaothacsi.html">Đào tạo Thạc sĩ</a></li>
+                        <li><a href="DaotaoTiensi.html">Đào tạo Tiến sĩ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tuyensinh.html" >Tuyển sinh <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tuyensinh.html">Thông tin tuyển sinh</a></li>
+                        <li><a href="Tuyensinh.html#titlephuongthuc">Phương thức xét tuyển</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Nckh.html" >Nghiên cứu khoa học <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Nckh.html">Đề tài nghiên cứu</a></li>
+                        <li><a href="Nckh.html">Hội thảo khoa học</a></li>
+                        <li><a href="https://tapchikhoahoc.hvpnvn.edu.vn/">Tạp chí khoa học</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tintuc.html" class="active">Tin tức <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tintuc.html">Tin tức mới</a></li>
+                        <li><a href="Tintuc.html">Sự kiện</a></li>
+                        <li><a href="Tintuc.html">Thông báo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Sinhvien.html">Sinh viên <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Sinhvien.html">Hoạt động sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Câu lạc bộ</a></li>
+                        <li><a href="Sinhvien.html">Hỗ trợ sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Việc làm - Thực tập</a></li>
+                    </ul>
+                </li>
+                <li><a href="Lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    
+    <div class="feature">
+    <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span>›</span>
+        <span class="current"><a href="Tintuc.html">Tin tức</a></span>
+    </div>
+</div>
+    <div class="new">
+        <div class="container">
+            <div class="top-bar">
+                <div class="tools">
+                <input type="text" placeholder="Nhập để tìm kiếm">
+                <select>
+                    <option>Sắp xếp mặc định</option>
+                    <option>Xếp theo cũ nhất</option>
+                    <option>Xếp theo mới nhất</option>                    
+                </select>
+                </div>
+            </div>
+
+            <div class="new-list">
+                <div class="card">
+                    <a href="chitiettintuc.html?id=tt1" class="card">
+                    <img src="anh8.jpg">
+                    <h4>ĐẤU TRƯỜNG IT ESPORTS VWA CHÍNH THỨC KHỞI TRANH!</h4>
+                    <p>Viện CNTT mang tới một sân chơi cho các Game thủ nói chung và tín đồ của Liên Quân Mobile nói riêng</p>
+                    <span>11/05/2026</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="chitiettintuc.html?id=tt2" class="card">
+                    <img src="anh9.jpg">
+                    <h4>CUỘC THI SINH VIÊN THANH LỊCH 2026 </h4>
+                    <p>Cuộc thi “Sinh viên Thanh lịch 2026” chính thức trở lại với diện mạo mới, hứa hẹn mang đến sân chơi sôi động, sáng tạo dành cho sinh viên các trường đại học, cao đẳng và học viện trên cả nước. </p>
+                    <span>18/05/2026</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="chitiettintuc.html?id=tt3" class="card">
+                    <img src="anh4.jpg">
+                    <h4>NGÀY HỘI HIẾN MÁU "GIỌT NẮNG HỒNG XIII"</h4>
+                    <p>Vậy là hành trình “Giọt Nắng Hồng XIII” đã chính thức khởi động và đi được một nửa chặng đường.</p>
+                    <span>07/04/2026</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="chitiettintuc.html?id=tt4" class="card">
+                    <img src="anh10.png">
+                    <h4>GIẢI BÓNG ĐÁ NỮ SINH VIÊN HỌC VIỆN PHỤ NỮ VIỆT NAM</h4>
+                    <p>Trong không khí phấn khởi chào mừng những ngày lễ lớn của đất nước và tuổi trẻ Việt Nam, sáng ngày 17/1/2026, Học viện Phụ nữ Việt Nam đã tổ chức khai mạc Giải bóng đá nữ sinh viên năm 2026</p>
+                    <span>17/01/2026</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="chitiettintuc.html?id=tt5" class="card">
+                    <img src="anh16.png">
+                    <h4>NỮ SINH VIÊN DÂN TỘC TÀY: BẢO VỆ NỀN TẢNG TƯ TƯỞNG CỦA ĐẢNG CẦN CHẠM ĐẾN CẢM XÚC CỦA NGƯỜI TRẺ</h4>
+                    <p>“Bảo vệ nền tảng tư tưởng của Đảng cần chạm đến cảm xúc của người trẻ” — góc nhìn của nữ sinh viên dân tộc Tày Hoàng Thị Hồng, sinh viên K11 Khoa Truyền thông đa phương tiện, Học viện Phụ nữ Việt Nam.</p>
+                    <span>14/05/2026</span>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="chitiettintuc.html?id=tt6" class="card">
+                    <img src="nckh6.png">
+                    <h4>Thông báo tổ chức thi chứng chỉ ứng dụng Công nghệ thông tin cho sinh viên Học viện Phụ nữ Việt Nam</h4>
+                    <p>Học viện Phụ nữ Việt Nam thông báo về việc thi chứng chỉ ứng dụng Công nghệ thông tin cho sinh viên Học viện.</p>
+                    <span>07/05/2026</span>
+                    </a>
+                </div>
+
+ <div class="pagination">
+    <a href="#">«</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">»</a>
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo-footer"><a href=""><img src="logo hvpnvn trắng.png" alt="Logo"></a></div>
+            <div class="footer-contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> Hotline: 024 3775 1705</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: vwa@vwa.edu.vn</p>
+                <p><i class="fa-solid fa-globe"></i> hvpnvn.edu.vn</p>
+            </div>
+            <div class="footer-campus">
+                <h3>Các cơ sở</h3>
+                <p><i class="fa-solid fa-building"></i> Trụ sở chính (Hà Nội): 68 Nguyễn Chí Thanh, P. Láng Thượng, Q. Đống Đa, Hà Nội.</p>
+                <p><i class="fa-solid fa-building"></i> Phân hiệu TP. Hồ Chí Minh: 620 Đỗ Xuân Hợp, P. Phước Long, TP. Hồ Chí Minh.</p>
+                <p><i class="fa-solid fa-building"></i> Cơ sở 3 (Hà Nội).</p>
+            </div>
+            <div class="footer-link">
+                <h3>Trang web</h3>
+                <ul>
+                    <li><a href="Gioithieu.html"><i class="fa-solid fa-circle-info"></i>Giới thiệu</a></li>
+                    <li><a href="Tuyensinh.html"><i class="fa-solid fa-file-signature"></i>Tuyển sinh</a></li>
+                    <li><a href="Daotao.html"><i class="fa-solid fa-graduation-cap"></i>Đào tạo</a></li>
+                    <li><a href="Tintuc.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Mạng xã hội</h3>
+                <a href="https://www.facebook.com/Hocvienphunu"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a href="https://www.tiktok.com/@hocvienphunuvietnam"><i class="fa-brands fa-tiktok"></i>Tiktok</a>
+                <a href="https://www.youtube.com/@vietnamwomensacademy8946/featured"><i class="fa-brands fa-youtube"></i>Youtube</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Học viện Phụ nữ Việt Nam. All Rights Reserved. LTD</p>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('main-menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+            const icon = toggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Sub-menu toggle on mobile tap (for items with children)
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('#main-menu > li > a').forEach(link => {
+                const parent = link.parentElement;
+                if (parent.querySelector('.sub-menu')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        parent.classList.toggle('open-sub');
+                    });
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

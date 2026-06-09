@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinh viên</title>
+    <link rel="stylesheet" href="styleheader&footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+.feature {
+  max-width: 1200px;
+  width: 100%;
+  padding:14px 16px;
+  margin: auto;
+}
+.breadcrumb {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.breadcrumb a {
+  text-decoration: none;
+  color: #777;
+}
+.breadcrumb .current a {
+  color:#0047C6;
+  font-weight: 500;
+}
+.contact-wrapper {
+    max-width: 1200px;
+    width:100%;
+    margin: auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.content {
+    max-width: 1000px;
+    width:100%;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    line-height: 1.8;
+}
+
+.content h2 {
+    font-size: 28px;
+    color: #0047C6;
+    margin-bottom: 20px;
+    border-left: 5px solid #F54291;
+    padding-left: 10px;
+}
+.content p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+.content b {
+    color: #0047C6;
+}
+.content p:hover {
+    background: #f9f9f9;
+    padding-left: 5px;
+    transition: 0.3s;
+}
+.contact-form {
+    width: 35%;
+    margin-top: 40px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.contact-form h2 {
+    text-align: center;
+    color:#0047C6;
+    margin-bottom: 20px;
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+.contact-form textarea {
+    resize: none;
+    height: 100px;
+}
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contact-form button:hover {
+    background: #0056b3;
+}
+
+
+
+/* ===== CTA IMAGE ===== */
+.cta-image{
+  position: relative;
+  width:100%;
+  height:auto;
+  overflow:hidden;
+  opacity:0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+.cta-image.show{
+  opacity:1;
+  transform: translateY(0);
+}
+.cta-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+/* ===== OVERLAY ===== */
+.cta-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+  color:white;
+  padding:20px;
+}
+.cta-overlay h2{
+  font-size:34px;
+  margin-bottom:30px;
+  max-width:800px;
+  text-shadow:0 0 10px rgba(255,255,255,0.9);
+}
+.cta-buttons{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.btn{
+  padding:14px 28px;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  color:white;
+  border:none;
+  cursor:pointer;
+  transition:0.3s;
+}
+.explore{
+  background: linear-gradient(135deg,#4facfe,#00c6ff);
+}
+.apply{
+  background: linear-gradient(135deg,#ff7a18,#ffb347);
+}
+.later{
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+}
+/* hover */
+.btn:hover{
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+
+/* Tablet */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 15px;
+    }
+    .content {
+        width: 100%;
+        padding: 20px;
+        margin: 20px 0;
+    }
+    .contact-form {
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto; 
+    }
+    .cta-buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn{
+        width: 80%;
+        text-align: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .content h2 {
+        font-size: 22px;
+    }
+    .content p {
+        font-size: 14px;
+    }
+    .contact-form h2 {
+        font-size: 18px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+    }
+    .cta-overlay{
+        font-size: 18px;
+    }
+    .btn{
+        width: 100%;
+        padding: 7px;
+        font-size: 14px;
+    }
+    .cta-image{
+        height:100%;
+    }
+    .cta-image img{
+        height: 250px; 
+        object-fit: cover;
+    }
+    .cta-overlay h2{
+        font-size: 16px;      
+        line-height: 1.4;     
+        margin-bottom: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+        <!-- top header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <span>📍 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</span>
+                <span>📞 024 3775 9907</span>
+                <span>✉ vwa@vwa.edu.vn</span>
+            </div>
+            <div class="top-right">
+                <div class="find-top">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>⌕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <div class="logo">
+                    <img src="logo hvpnvn xanh.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <span id="hv">HỌC VIỆN</span>
+                    <span id="pnvn">PHỤ NỮ VIỆT NAM</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="main-menu">
+                <li><a href="index.html" >Trang chủ</a></li>
+                <li>
+                    <a href="Gioithieu.html">Giới thiệu <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Gioithieu.html#tongquan">Tổng quan về học viện</a></li>
+                        <li><a href="Gioithieu.html#lichsu">Lịch sử hình thành</a></li>
+                        <li><a href="Gioithieu.html#sumenh">Sứ mệnh - Tầm nhìn</a></li>
+                        <li><a href="Gioithieu.html#cocau">Cơ cấu tổ chức</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Daotao.html">Đào tạo <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="Daotaodaihoc.html">Đào tạo Đại học <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="sub-menu">
+                                <li><a href="Daotaodaihoc.html#cntt">Công nghệ thông tin</a></li>
+                                <li><a href="Daotaodaihoc.html#ttdpt">Truyền thông đa phương tiện</a></li>
+                                <li><a href="Daotaodaihoc.html#ctxh">Công tác xã hội</a></li>
+                                <li><a href="Daotaodaihoc.html#tamly">Tâm lý học</a></li>
+                                <li><a href="Daotaodaihoc.html#luatkt">Luật kinh tế</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Daotaothacsi.html">Đào tạo Thạc sĩ</a></li>
+                        <li><a href="DaotaoTiensi.html">Đào tạo Tiến sĩ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tuyensinh.html" >Tuyển sinh <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tuyensinh.html">Thông tin tuyển sinh</a></li>
+                        <li><a href="Tuyensinh.html#titlephuongthuc">Phương thức xét tuyển</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Nckh.html" >Nghiên cứu khoa học <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Nckh.html">Đề tài nghiên cứu</a></li>
+                        <li><a href="Nckh.html">Hội thảo khoa học</a></li>
+                        <li><a href="https://tapchikhoahoc.hvpnvn.edu.vn/">Tạp chí khoa học</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tintuc.html">Tin tức <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tintuc.html">Tin tức mới</a></li>
+                        <li><a href="Tintuc.html">Sự kiện</a></li>
+                        <li><a href="Tintuc.html">Thông báo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Sinhvien.html" >Sinh viên <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Sinhvien.html">Hoạt động sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Câu lạc bộ</a></li>
+                        <li><a href="Sinhvien.html">Hỗ trợ sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Việc làm - Thực tập</a></li>
+                    </ul>
+                </li>
+                <li><a href="Lienhe.html" class="active">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    
+
+    <div class="feature">
+    <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span>›</span>
+        <span class="current"><a href="Lienhe.html">Liên hệ</a></span>
+    </div>
+</div>
+
+
+
+<div class="contact-wrapper">
+
+<div class="content">
+<h2>Liên hệ</h2>
+<p><b>Học viện Phụ nữ Việt Nam</b></p>
+<p><b>Trụ sở chính (Hà Nội)</b>: Số 68 đường Nguyễn Chí Thanh, phường Láng Thượng, quận Đống Đa, thành phố Hà Nội.<br>
+    <b>Phân hiệu Thành phố Hồ Chí Minh</b>: Số 620 đường Đỗ Xuân Hợp, phường Phước Long, thành phố Hồ Chí Minh.<br>
+    <b> Cơ sở 3 (Hà Nội)</b>: Xã Gia Lâm, thành phố Hà Nội (tuyến đường 179, khu vực Dương Xá – Kiêu Kỵ).
+</p>
+<p><b>Điện thoại:</b><br>
+Tuyển sinh, đào tạo:
+024. 37751 750<br>
+Tổ chức hành chính:
+0912. 019 253<br>
+Cơ sở vật chất:
+0389. 986363<br>
+</p>
+<p><b>Email: </b>vwa@vwa.edu.vn</p>
+<p><b>Trang web: </b>hvpnvn.edu.vn</p>
+</div>
+
+
+<form class="contact-form" id="contactForm">
+        <h2>Gửi góp ý cho chúng tôi</h2>
+        <input type="text" name="fullname" placeholder="Họ và tên" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Nội dung góp ý" required></textarea>
+        <button type="submit">Gửi</button>
+    </form>
+</div>
+
+
+
+    <div class="cta-image">
+        <img src="nutbam.png" alt="">
+        <!-- overlay -->
+        <div class="cta-overlay">
+        <h2>Bạn đã sẵn sàng trở thành sinh viên của chúng tôi chưa?</h2>
+
+        <div class="cta-buttons">
+            <a href="Gioithieu.html" class="btn explore">Tìm hiểu thêm 📘</a>
+            <a href="dangkytuyensinh.html" class="btn apply" onclick="celebrate(event)">Đăng ký ngay 🎓</a>
+            <button class="btn later" id="laterBtn">Để suy nghĩ thêm 😆</button>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo-footer"><a href=""><img src="logo hvpnvn trắng.png" alt="Logo"></a></div>
+            <div class="footer-contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> Hotline: 024 3775 1705</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: vwa@vwa.edu.vn</p>
+                <p><i class="fa-solid fa-globe"></i> hvpnvn.edu.vn</p>
+            </div>
+            <div class="footer-campus">
+                <h3>Các cơ sở</h3>
+                <p><i class="fa-solid fa-building"></i> Trụ sở chính (Hà Nội): 68 Nguyễn Chí Thanh, P. Láng Thượng, Q. Đống Đa, Hà Nội.</p>
+                <p><i class="fa-solid fa-building"></i> Phân hiệu TP. Hồ Chí Minh: 620 Đỗ Xuân Hợp, P. Phước Long, TP. Hồ Chí Minh.</p>
+                <p><i class="fa-solid fa-building"></i> Cơ sở 3 (Hà Nội).</p>
+            </div>
+            <div class="footer-link">
+                <h3>Trang web</h3>
+                <ul>
+                    <li><a href="Gioithieu.html"><i class="fa-solid fa-circle-info"></i>Giới thiệu</a></li>
+                    <li><a href="Tuyensinh.html"><i class="fa-solid fa-file-signature"></i>Tuyển sinh</a></li>
+                    <li><a href="Daotao.html"><i class="fa-solid fa-graduation-cap"></i>Đào tạo</a></li>
+                    <li><a href="Tintuc.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Mạng xã hội</h3>
+                <a href="https://www.facebook.com/Hocvienphunu"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a href="https://www.tiktok.com/@hocvienphunuvietnam"><i class="fa-brands fa-tiktok"></i>Tiktok</a>
+                <a href="https://www.youtube.com/@vietnamwomensacademy8946/featured"><i class="fa-brands fa-youtube"></i>Youtube</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Học viện Phụ nữ Việt Nam. All Rights Reserved. LTD</p>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('main-menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+            const icon = toggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Sub-menu toggle on mobile tap (for items with children)
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('#main-menu > li > a').forEach(link => {
+                const parent = link.parentElement;
+                if (parent.querySelector('.sub-menu')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        parent.classList.toggle('open-sub');
+                    });
+                }
+            });
+        }
+    </script>
+    <script>
+        // ===== FORM LIÊN HỆ =====
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault(); // chặn reload
+
+    alert("Gửi thành công! Chúng tôi sẽ phản hồi bạn sớm nhất ");
+
+    form.reset();
+});
+    </script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+        <script>
+// 🎉 confetti + delay chuyển trang
+function celebrate(event){
+  event.preventDefault();
+
+  const duration = 2500; // lâu hơn tí cho đã
+  const end = Date.now() + duration;
+
+  (function frame(){
+    confetti({
+      particleCount:6,
+      angle:60,
+      spread:90,
+      origin:{x:0}
+    });
+
+    confetti({
+      particleCount:6,
+      angle:120,
+      spread:90,
+      origin:{x:1}
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+
+  setTimeout(()=>{
+    window.location.href = "dangkytuyensinh.html";
+  }, duration);
+}
+
+
+// 😆 nút chạy nhẹ
+const laterBtn = document.getElementById("laterBtn");
+
+laterBtn.addEventListener("mouseover", ()=>{
+  const x = Math.random()*60 - 30;
+  const y = Math.random()*30 - 15;
+
+  laterBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+
+// ✨ hiệu ứng cuộn hiện ra (QUAN TRỌNG)
+const cta = document.querySelector('.cta-image');
+
+window.addEventListener('scroll', ()=>{
+  const top = cta.getBoundingClientRect().top;
+
+  if(top < window.innerHeight - 100){
+    cta.classList.add('show');
+  }
+});
+</script>
+
+</body>
+</html>

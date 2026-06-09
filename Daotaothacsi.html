@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đào tạo Thạc sĩ</title>
+    <link rel="stylesheet" href="styleheader&footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+    font-size:13px; color:#777;
+    padding:14px 16px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.breadcrumb a { text-decoration:none; color:#777; }
+.breadcrumb .current { color:#0047C6; font-weight:500; }
+ 
+.main {
+    display:flex;
+    gap:28px;
+    max-width:1200px;
+    width:100%;
+    margin:0 auto 50px;
+    padding:0 16px;
+    align-items:flex-start;
+}
+ 
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width:240px;
+    flex-shrink:0;
+    position:sticky;
+    top:90px;
+}
+.sidebar ul {
+    list-style:none;
+    padding:0; margin:0;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.09);
+    overflow:hidden;
+}
+.sidebar li {
+    padding:12px 16px;
+    border-bottom:1px solid #f0f0f0;
+    cursor:pointer;
+    transition:0.2s;
+    font-size:14px;
+    color:#333;
+}
+.sidebar li:last-child { border-bottom:none; }
+.sidebar li:hover { background:#f0f6ff; color:#0047C6; }
+.sidebar li.active {
+    background:#0047C6;
+    color:#fff;
+    font-weight:700;
+}
+ 
+.sidebar-toggle {
+    display:none;
+    width:100%;
+    padding:12px 16px;
+    background:#0047C6;
+    color:white;
+    font-weight:700;
+    font-size:14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:left;
+    margin-bottom:4px;
+}
+.sidebar-toggle i { float:right; }
+ 
+/* ===== CONTENT ===== */
+.content { flex:1; min-width:0; }
+.content span { font-weight:bold; }
+ 
+.box {
+    display:none;
+    background:#fff;
+    padding:24px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    line-height:1.75;
+    font-size:15px;
+}
+.box.active { display:block; }
+.box a {
+    display:inline-block;
+    margin-top:10px;
+    color:#0047C6;
+    text-decoration:none;
+    font-weight:600;
+}
+.box a:hover { text-decoration:underline; }
+ 
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:20px;
+}
+.grid-card {
+    background:#f0f6ff;
+    padding:16px;
+    border-left:4px solid #0047C6;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    transition:0.3s;
+    cursor:pointer;
+}
+.grid-card:hover {
+    transform:translateY(-4px);
+    border-left-color:#025efd;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.grid-card h4 {
+    margin-bottom:8px;
+    color:#0047C6;
+    font-size:14px;
+}
+.grid-card p { font-size:14px; font-weight:600; }
+ 
+.card {
+    background:#fafafa;
+    padding:20px;
+    border-left:4px solid #0047C6;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    line-height:1.8;
+    font-size:14px;
+}
+
+@media (max-width:1024px) {
+    .sidebar { width:200px; }
+}
+@media (max-width:768px){
+    .main { flex-direction:column; gap:16px; }
+    .sidebar-toggle { display:block; }
+    .sidebar {
+        position:static; width:100%;
+        top:auto;
+    }
+    .sidebar ul {
+        display:none;
+        border-radius:0 0 14px 14px;
+    }
+    .sidebar ul.open { display:block; }
+    .grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+}
+@media (max-width:480px){
+    .grid { grid-template-columns:1fr; gap:10px; }
+    .grid-card h4 { font-size:13px; }
+    .box { padding:16px; font-size:14px; }
+    .card { padding:14px; font-size:13px; }
+    .sidebar li { font-size:13px; padding:10px 14px; }
+}
+    </style>
+</head>
+<body>
+    <!-- top header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <span>📍 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</span>
+                <span>📞 024 3775 9907</span>
+                <span>✉ vwa@vwa.edu.vn</span>
+            </div>
+            <div class="top-right">
+                <div class="find-top">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>⌕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <div class="logo">
+                    <img src="logo hvpnvn xanh.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <span id="hv">HỌC VIỆN</span>
+                    <span id="pnvn">PHỤ NỮ VIỆT NAM</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="main-menu">
+                <li><a href="index.html" >Trang chủ</a></li>
+                <li>
+                    <a href="Gioithieu.html" >Giới thiệu <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Gioithieu.html#tongquan">Tổng quan về học viện</a></li>
+                        <li><a href="Gioithieu.html#lichsu">Lịch sử hình thành</a></li>
+                        <li><a href="Gioithieu.html#sumenh">Sứ mệnh - Tầm nhìn</a></li>
+                        <li><a href="Gioithieu.html#cocau">Cơ cấu tổ chức</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Daotao.html" class="active">Đào tạo <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="Daotaodaihoc.html">Đào tạo Đại học <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="sub-menu">
+                                <li><a href="Daotaodaihoc.html#cntt">Công nghệ thông tin</a></li>
+                                <li><a href="Daotaodaihoc.html#ttdpt">Truyền thông đa phương tiện</a></li>
+                                <li><a href="Daotaodaihoc.html#ctxh">Công tác xã hội</a></li>
+                                <li><a href="Daotaodaihoc.html#tamly">Tâm lý học</a></li>
+                                <li><a href="Daotaodaihoc.html#luatkt">Luật kinh tế</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Daotaothacsi.html">Đào tạo Thạc sĩ</a></li>
+                        <li><a href="DaotaoTiensi.html">Đào tạo Tiến sĩ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tuyensinh.html">Tuyển sinh <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tuyensinh.html">Thông tin tuyển sinh</a></li>
+                        <li><a href="Tuyensinh.html#titlephuongthuc">Phương thức xét tuyển</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Nckh.html">Nghiên cứu khoa học <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Nckh.html">Đề tài nghiên cứu</a></li>
+                        <li><a href="Nckh.html">Hội thảo khoa học</a></li>
+                        <li><a href="https://tapchikhoahoc.hvpnvn.edu.vn/">Tạp chí khoa học</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tintuc.html">Tin tức <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tintuc.html">Tin tức mới</a></li>
+                        <li><a href="Tintuc.html">Sự kiện</a></li>
+                        <li><a href="Tintuc.html">Thông báo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Sinhvien.html">Sinh viên <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Sinhvien.html">Hoạt động sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Câu lạc bộ</a></li>
+                        <li><a href="Sinhvien.html">Hỗ trợ sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Việc làm - Thực tập</a></li>
+                    </ul>
+                </li>
+                <li><a href="Lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+    <div class="breadcrumb">
+                <a href="index.html">Trang chủ</a>
+                <span>›</span>
+                <a href="Daotao.html">Đào tạo</a>
+                <span>›</span>
+                <span class="current">Đào tạo Thạc sĩ</span>
+           </div>
+     <section class="main">
+        <div class="sidebar">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                Chọn ngành học <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <ul id="sidebarMenu">
+                <li data-id="qtkd" class="active">Ngành Quản trị kinh doanh</li>
+                <li data-id="ctxh">Ngành Công tác xã hội</li>
+                <li data-id="luat">Ngành Luật</li>
+                <li data-id="tamlyhoc">Ngành Tâm lý học lâm sàng</li>
+                <li data-id="kthoc">Ngành Kinh tế học</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="qtkd" class="box active">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>8340101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Bằng thạc sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>2 năm<br>
+                        Thời gian tối đa: 4 năm</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Định hướng</h4>
+                        <p>Môn cơ bản: Kinh tế học<br>
+                        Môn chuyên ngành: Quản trị học </p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Học viên tốt nghiệp chương trình <span>Thạc sĩ Quản trị kinh doanh</span> có thể trở thành nhà quản trị chuyên nghiệp làm việc tại các vị trí quản lý bộ phận chức năng (bán hàng, marketing, nhân sự, kế hoạch kinh doanh, tài chính,…), các vị trí quản lý về quản trị kinh doanh hoặc khởi sự kinh doanh tại doanh nghiệp trong và ngoài nước, các tập đoàn đa quốc gia thuộc mọi lĩnh vực ngành nghề. Người học cũng có thể khởi nghiệp, tự thành lập mô hình kinh doanh hoặc trở thành chuyên gia tư vấn về quản trị điều hành doanh nghiệp hoặc nghiên cứu trong các viện nghiên cứu, giảng dạy trong các trường đại học đào tạo về quản trị kinh doanh.<br>
+                 Sau khi tốt nghiệp, học viên có khả năng tự học suốt đời và có thể học tập tiếp chương trình đào tạo tiến sĩ trong và ngoài nước.<br>                
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/thac-si-quan-tri-kinh-doanh/">Xem thêm </a>
+                 </div>
+            </div>
+            <div id="ctxh" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>8760101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Bằng thạc sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>2 năm<br>
+                        Thời gian tối đa: 4 năm</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Định hướng</h4>
+                        <p>Môn cơ bản: An sinh xã hội<br>
+                        Môn chuyên ngành: Tổng quan CTXH </p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Học viên tốt nghiệp chương trình <span>Thạc sĩ Công tác xã hội</span> có thể trở thành:<br>     
+                 – Nhà quản trị/quản lý công tác xã hội ở các cơ sở bảo trợ xã hội, trung tâm công tác xã hội khác nhau.<br>
+                 – Chuyên gia, người tự khởi nghiệp trong các lĩnh vực liên quan đến Công tác xã hội với mục đích phục vụ cộng đồng.<br>
+                 – Chuyên viên/kiểm huấn viên/nhân viên công tác xã hội tại các cơ quan/tổ chức thuộc nhà nước, phi chính phủ, quốc tế.<br>
+                 – Giảng viên/nghiên cứu viên về Công tác xã hội và các ngành gần ở các cơ sở đào tạo, viện nghiên cứu.<br>
+                 – Cán bộ tham vấn trong lĩnh vực Công tác xã hội…  <br>         
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/thac-si-nganh-cong-tac-xa-hoi/">Xem thêm </a>
+                 </div>
+            </div>
+            <div id="luat" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>8380101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Bằng thạc sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>2 năm<br>
+                        Thời gian tối đa: 4 năm</p>
+                    </div>
+                 </div>
+                <div class="card">
+                 Người học sau khi tốt nghiệp chương trình đào tạo <span>Thạc sĩ ngành Luật</span> định hướng ứng dụng có đủ năng lực, kỹ năng và phẩm chất đạo đức để đảm nhiệm vị trí công tác sau:<br>
+                 – Chuyên gia, chuyên viên làm công tác tham mưu, tư vấn, xây dựng và thực hiện pháp luật tại các cơ quan nhà nước, xã hội, đơn vị như: Văn phòng Quốc hội, Văn phòng Chính phủ, Văn phòng Chủ tịch nước, Văn phòng Trung ương Đảng, các bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ; Văn phòng Hội đồng nhân dân, Ủy ban nhân dân các cấp, các cơ quan chuyên môn thuộc Ủy ban nhân dân các cấp; tổ chức chính trị, chính trị – xã hội, xã hội nghề nghiệp; các doanh nghiệp, hợp tác xã.<br>
+                 – Chuyên gia thực hành pháp luật tại các cơ quan tư pháp, bổ trợ tư pháp và tổ chức hành nghề luật khác như luật sư, công chứng, trọng tài, thẩm định, đấu giá, thừa phát lại…<br>
+                 – Chuyên gia thực hành pháp luật làm việc cho các tổ chức phi chính phủ, cơ quan đại diện nước ngoài tại Việt Nam.<br>
+                 Người tốt nghiệp chương trình đào tạo thạc sĩ ngành Luật định hướng ứng dụng có khả năng tiếp tục theo học chương trình đào tạo tiến sĩ.<br>                 
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/thac-si-nganh-luat/">Xem thêm </a>  
+                 </div>  
+            </div>
+            <div id="tamlyhoc" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>8310402</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Bằng thạc sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>2 năm<br>
+                        Thời gian tối đa: 4 năm</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Định hướng</h4>
+                        <p>Ngành Tâm lý học (7310401)<br>
+                        Tâm lý Giáo dục (7310403) </p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Người học sau khi tốt nghiệp chương trình đào tạo <span>Thạc sĩ ngành Tâm lý học lâm sàng</span> định hướng ứng dụng có đủ năng lực, kỹ năng và phẩm chất đạo đức để đảm nhiệm vị trí công tác sau:<br> 
+                 – Cán bộ quản lí, cán bộ chuyên môn trong các bệnh viện, cơ sở y tế, trung tâm hỗ trợ tâm lý.<br> 
+                 – Chuyên gia, chuyên viên tâm lý học đường trong các các trường học. Giảng viên, nghiên cứu viên trong các trường đại học, cao đẳng, trung tâm nghiên cứu, viện nghiên cứu;<br> 
+                 – Nhà khởi nghiệp, cố vấn, chuyên viên tư vấn, tham vấn tâm các công ty, trung tâm;<br> 
+                 – Chuyên gia, chuyên viên, cộng tác viên, tình nguyện viên .. phi chính phủ trong nước và nước ngoài, các dự án quốc tế. lý của văn phòng trong các tổ chức<br> 
+                 Người học sau khi tốt nghiệp có khả năng tự học, tự nghiên cứu, tự cập nhật kiến thức mới về các vấn đề chung của lĩnh vực kinh tế xã hội và các vấn đề đặc thù của ngành tâm lí học lâm sàng.<br> 
+                 Người tốt nghiệp chương trình đào tạo thạc sĩ ngành tâm lý lâm sàng có khả năng tiếp tục theo học chương trình đào tạo tiến sĩ.<br>               
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/thac-si-tam-ly-hoc-lam-sang/">Xem thêm </a>
+                 </div>
+            </div>
+            <div id="kthoc" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>8310101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Thạc sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>2 năm</p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Sau khi tốt nghiệp thạc sĩ ngành Kinh tế học theo định hướng ứng dụng, người học:
+                 – Có khả năng phát triển thành chuyên gia thực hành theo hướng chuyên môn sâu trong lĩnh vực kinh tế;<br> 
+                 – Có khả năng học tập, thực hành, nghiên cứu nhằm phát triển tri thức mới trong lĩnh vực kinh tế quốc gia, kinh tế vùng, kinh tế cấp xã, kinh tế cấp tỉnh/ thành phố;<br> 
+                 – Có khả năng phát triển chuyên môn trong công tác quản lý, lãnh đạo kinh tế tại doanh nghiệp/ tổ chức, chính quyền cấp xã, chính quyền cấp tỉnh/ thành phố.<br> 
+                 – Là các nhà khởi nghiệp, cố vấn, nhà tư vấn kinh tế; có khả năng tự học, tự nghiên cứu và cập nhật kiến thức kinh tế; trở thành giảng viên, nghiên cứu viên trong ác trường đại học, cao đẳng, viện nghiên cứu.<br> 
+                 – Có khả năng tiếp tục học chương trình đào tạo tiến sĩ.<br> 
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/thac-sy-nganh-kinh-te-hoc/">Xem thêm </a>
+                 </div>
+            </div>
+        </div>
+
+        </div>
+     </section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo-footer"><a href=""><img src="logo hvpnvn trắng.png" alt="Logo"></a></div>
+            <div class="footer-contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> Hotline: 024 3775 1705</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: vwa@vwa.edu.vn</p>
+                <p><i class="fa-solid fa-globe"></i> hvpnvn.edu.vn</p>
+            </div>
+            <div class="footer-campus">
+                <h3>Các cơ sở</h3>
+                <p><i class="fa-solid fa-building"></i> Trụ sở chính (Hà Nội): 68 Nguyễn Chí Thanh, P. Láng Thượng, Q. Đống Đa, Hà Nội.</p>
+                <p><i class="fa-solid fa-building"></i> Phân hiệu TP. Hồ Chí Minh: 620 Đỗ Xuân Hợp, P. Phước Long, TP. Hồ Chí Minh.</p>
+                <p><i class="fa-solid fa-building"></i> Cơ sở 3 (Hà Nội).</p>
+            </div>
+            <div class="footer-link">
+                <h3>Trang web</h3>
+                <ul>
+                    <li><a href="Gioithieu.html"><i class="fa-solid fa-circle-info"></i>Giới thiệu</a></li>
+                    <li><a href="Tuyensinh.html"><i class="fa-solid fa-file-signature"></i>Tuyển sinh</a></li>
+                    <li><a href="Daotao.html"><i class="fa-solid fa-graduation-cap"></i>Đào tạo</a></li>
+                    <li><a href="Tintuc.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Mạng xã hội</h3>
+                <a href="https://www.facebook.com/Hocvienphunu"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a href="https://www.tiktok.com/@hocvienphunuvietnam"><i class="fa-brands fa-tiktok"></i>Tiktok</a>
+                <a href="https://www.youtube.com/@vietnamwomensacademy8946/featured"><i class="fa-brands fa-youtube"></i>Youtube</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Học viện Phụ nữ Việt Nam. All Rights Reserved. LTD</p>
+    </div>
+
+
+<script>
+    // ---- Hamburger nav ----
+    const toggle = document.getElementById('menuToggle');
+    const menu   = document.getElementById('main-menu');
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        const icon = toggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+    });
+    // Mobile sub-menu tap
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('#main-menu > li > a').forEach(link => {
+            const parent = link.parentElement;
+            if (parent.querySelector('.sub-menu')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    parent.classList.toggle('open-sub');
+                });
+            }
+        });
+    }
+ 
+    // ---- Sidebar: desktop click / mobile toggle ----
+    const menuItems  = document.querySelectorAll('.sidebar li');
+    const boxes      = document.querySelectorAll('.box');
+    const sideToggle = document.getElementById('sidebarToggle');
+    const sideMenu   = document.getElementById('sidebarMenu');
+ 
+    // Toggle button for mobile
+    sideToggle.addEventListener('click', () => {
+        sideMenu.classList.toggle('open');
+        const icon = sideToggle.querySelector('i');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+    });
+ 
+    // Item click
+    menuItems.forEach(item => {
+        item.addEventListener('click', function () {
+            menuItems.forEach(i => i.classList.remove('active'));
+            boxes.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const id = this.getAttribute('data-id');
+            const target = document.getElementById(id);
+            if (target) target.classList.add('active');
+ 
+            // Update toggle label on mobile
+            sideToggle.childNodes[0].textContent = this.textContent + ' ';
+ 
+            // Close sidebar menu on mobile after selection
+            if (window.innerWidth <= 768) {
+                sideMenu.classList.remove('open');
+                const icon = sideToggle.querySelector('i');
+                icon.classList.add('fa-chevron-down');
+                icon.classList.remove('fa-chevron-up');
+            }
+        });
+    });
+ 
+    // ---- Hash-based deep linking (e.g. Daotaodaihoc.html#cntt) ----
+    function openFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+        const target = document.querySelector(`.sidebar li[data-id="${hash}"]`);
+        if (target) target.click();
+    }
+    window.addEventListener('load', openFromHash);
+    window.addEventListener('hashchange', openFromHash);
+</script>
+
+
+</body>
+</html>

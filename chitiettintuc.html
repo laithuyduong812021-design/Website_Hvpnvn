@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nghiên cứu khoa học</title>
+    <link rel="stylesheet" href="styleheader&footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+/* ===== PAGE WRAPPER ===== */
+.page-wrap {
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 16px;
+}
+
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+    font-size:13px; color:#777;
+    padding:14px 0 10px;
+}
+.breadcrumb a { text-decoration:none; color:#777; }
+.breadcrumb a:hover { color:#0047C6; }
+.breadcrumb .current a { color:#0047C6; font-weight:500; }
+
+.content {
+    display:none;
+    background:#fff;
+    padding:32px 36px;
+    border-radius:14px;
+    border:1px solid #eee;
+    box-shadow:0 8px 25px rgba(0,0,0,0.07);
+    margin-bottom:40px;
+    line-height:1.75;
+    color:#333;
+    width:100%;
+    overflow:hidden;
+}
+.content.active { display:block; }
+
+.content h2 {
+    font-size:26px;
+    font-weight:bold;
+    line-height:1.4;
+    color:#111;
+    margin-bottom:10px;
+}
+.content > span {   
+    font-size:13px;
+    color:#0047C6;
+    display:block;
+    margin-bottom:4px;
+}
+.content hr {
+    width:80px;
+    height:3px;
+    background:#0047C6;
+    border:none;
+    margin:12px 0 18px;
+}
+.content p {
+    font-size:15px;
+    text-align:justify;
+    margin-bottom:16px;
+}
+.content b { font-weight:700; }
+.content img {
+    margin:18px auto;
+    border-radius:8px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.1);
+}
+
+
+
+
+@media (max-width: 768px) {
+    .content { padding:20px 18px; }
+    .content h2 { font-size:19px; }
+    .content p  { font-size:14px; }
+    .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+}
+@media (max-width:480px){
+    .content { padding:16px 14px; border-radius:10px; }
+    .content h2 { font-size:17px; }
+    .content p  { font-size:13px; text-align:left; }
+    .content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+}
+    </style>
+</head>
+<body>
+        <!-- top header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <span>📍 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</span>
+                <span>📞 024 3775 9907</span>
+                <span>✉ vwa@vwa.edu.vn</span>
+            </div>
+            <div class="top-right">
+                <div class="find-top">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>⌕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <div class="logo">
+                    <img src="logo hvpnvn xanh.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <span id="hv">HỌC VIỆN</span>
+                    <span id="pnvn">PHỤ NỮ VIỆT NAM</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="main-menu">
+                <li><a href="index.html" >Trang chủ</a></li>
+                <li>
+                    <a href="Gioithieu.html">Giới thiệu <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Gioithieu.html#tongquan">Tổng quan về học viện</a></li>
+                        <li><a href="Gioithieu.html#lichsu">Lịch sử hình thành</a></li>
+                        <li><a href="Gioithieu.html#sumenh">Sứ mệnh - Tầm nhìn</a></li>
+                        <li><a href="Gioithieu.html#cocau">Cơ cấu tổ chức</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Daotao.html">Đào tạo <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="Daotaodaihoc.html">Đào tạo Đại học <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="sub-menu">
+                                <li><a href="Daotaodaihoc.html#cntt">Công nghệ thông tin</a></li>
+                                <li><a href="Daotaodaihoc.html#ttdpt">Truyền thông đa phương tiện</a></li>
+                                <li><a href="Daotaodaihoc.html#ctxh">Công tác xã hội</a></li>
+                                <li><a href="Daotaodaihoc.html#tamly">Tâm lý học</a></li>
+                                <li><a href="Daotaodaihoc.html#luatkt">Luật kinh tế</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Daotaothacsi.html">Đào tạo Thạc sĩ</a></li>
+                        <li><a href="DaotaoTiensi.html">Đào tạo Tiến sĩ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tuyensinh.html" >Tuyển sinh <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tuyensinh.html">Thông tin tuyển sinh</a></li>
+                        <li><a href="Tuyensinh.html#titlephuongthuc">Phương thức xét tuyển</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Nckh.html" class="active">Nghiên cứu khoa học <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Nckh.html">Đề tài nghiên cứu</a></li>
+                        <li><a href="Nckh.html">Hội thảo khoa học</a></li>
+                        <li><a href="https://tapchikhoahoc.hvpnvn.edu.vn/">Tạp chí khoa học</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tintuc.html">Tin tức <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tintuc.html">Tin tức mới</a></li>
+                        <li><a href="Tintuc.html">Sự kiện</a></li>
+                        <li><a href="Tintuc.html">Thông báo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Sinhvien.html">Sinh viên <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Sinhvien.html">Hoạt động sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Câu lạc bộ</a></li>
+                        <li><a href="Sinhvien.html">Hỗ trợ sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Việc làm - Thực tập</a></li>
+                    </ul>
+                </li>
+                <li><a href="Lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    
+    <div class="page-wrap">
+    <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span>›</span>
+        <span class="current"><a href="Nckh.html">Nghiên cứu khoa học</a></span>
+    </div>
+</div>
+
+<div class="content" id="tt1">
+    <h2>ĐẤU TRƯỜNG IT ESPORTS VWA CHÍNH THỨC KHỞI TRANH!</h2>
+    <span>11/05/2026</span>
+    <hr>
+    <p>🧩💻ĐÁNH THỨC BẢN LĨNH CHIẾN THẦN: ĐẤU TRƯỜNG IT ESPORTS VWA CHÍNH THỨC KHỞI TRANH!
+<br>👉Bạn là "trùm" gánh team hay chuyên gia "check map"? Đây là lúc rời khỏi màn hình điện thoại để bước ra khẳng định vị thế tại giải đấu Liên Quân Mobile - Học viện Phụ nữ Việt Nam! 
+<br>👉Viện CNTT mang tới một sân chơi cho các Game thủ nói chung và tín đồ của Liên Quân Mobile nói riêng. Đây không chỉ là nơi khẳng định kỹ năng cá nhân mà còn là dịp để các “chiến thần” của Học viện Phụ nữ Việt Nam kết nối, giao lưu và rinh về với tổng giá trị giải thưởng lên tới 2,000,000 VNĐ.
+<br>👉Với tính chất của một giải đấu cộng đồng cho sinh viên Học viện Phụ nữ Việt Nam, IT Esports VWA hy vọng sẽ thu hút được đông đảo sinh viên thuộc khuôn viên học viện, góp phần đẩy mạnh phong trào thể thao điện tử và vị thế của VWA ở mặt trận phía Bắc cũng như mang tới một ngày hội Esports ý nghĩa dành cho các khán giả trẻ.
+<br>Các kiện tướng VWA ơi, đấu trường đã sẵn sàng, âm thanh của chiến trường Liên Quân đang gọi tên những nhà vô địch! Không chỉ là vinh quang, đây còn là nơi để các bạn rinh về những phần thưởng cực kỳ hấp dẫn. 💰
+<br>WEC xin chính thức công bố giải thưởng dành cho những đội tuyển xuất sắc nhất:
+<br>💎 TỔNG GIẢI THƯỞNG: 2.000.000 VNĐ 💎
+<br>🥇 GIẢI NHẤT: 1.000.000 VNĐ + Danh hiệu Tân vương IT Esports 2026.
+<br>🥈 GIẢI NHÌ: 500.000 VNĐ.
+<br>🥉 GIẢI BA: 300.000 VNĐ.
+<br>🎖️ GIẢI KHUYẾN KHÍCH: 200.000 VNĐ.
+<br>NOTE LẠI LỊCH TRÌNH CHINH PHỤC:
+<br>⏰ Hạn đăng ký: 11/05 – 18h00 18/05
+<br>🎮 Thời gian "lên sàn": 22/05/2026
+<br>🔥 Thể thức: Double Elimination
+<br>🏢 Địa điểm: Học viện Phụ nữ Việt Nam.
+<br>Đừng để thanh xuân trôi qua trong lặng lẽ, hãy để đối thủ nhớ mặt đặt tên đội hình của bạn!
+<br>👉 ĐĂNG KÝ THAM GIA ĐỂ LẬP TEAM GHI DANH TẠI: https://forms.gle/ZzydPrGBZFRES7Tp7
+</p>
+<img src="anh8.jpg">
+<img src="tt11.jpg">
+<img src="tt12.jpg">
+
+</div>
+
+
+<div class="content" id="tt2">
+    <h2>KHỞI ĐỘNG CUỘC THI “SINH VIÊN THANH LỊCH 2026” – Hành trình tìm kiếm những gương mặt thế hệ mới</h2>
+    <span>18/05/2026</span>
+    <hr>
+    <p><b>Cuộc thi “Sinh viên Thanh lịch 2026” chính thức trở lại với diện mạo mới, hứa hẹn mang đến sân chơi sôi động, sáng tạo dành cho sinh viên các trường đại học, cao đẳng và học viện trên cả nước.</b>
+    <br>Với quy mô mở rộng cùng nhiều hoạt động hấp dẫn, “Sinh viên Thanh lịch 2026” được kỳ vọng sẽ thu hút đông đảo sinh viên các trường đại học, cao đẳng và học viện tham gia, góp phần tạo nên một mùa giải ấn tượng và giàu cảm hứng. Hãy cùng chờ đón hành trình tỏa sáng của “Sinh viên Thanh lịch 2026” – nơi hội tụ những sắc màu cá tính, nơi những gương mặt thế hệ mới được gọi tên và nơi thanh xuân được viết nên bằng sự tự tin, bản lĩnh và khát vọng vươn xa.
+    </p>
+    <img src="tt21.png">
+    <p><b>ĐIỀU KIỆN DỰ THI:</b>
+<br>– Sinh viên/tân sinh viên đang theo học tại các trường Cao đẳng, Đại học, Học viện trên toàn quốc.
+<br>– Học tập: Điểm TB học kỳ gần nhất đạt từ 2,0 trở lên theo hệ 4 (hoặc từ 6,0 trở lên theo hệ10)
+<br>– Rèn luyện: Điểm rèn luyện học kỳ gần nhất đạt loại Khá trở lên
+<br>– Chiều cao: Nữ từ 1m55; Nam từ 1m65 trở lên
+<br>– Có tư cách đạo đức tốt, giao tiếp tự tin; không vi phạm nội quy, quy chế và các hình thức kỷ luật của nhà trường.
+<br>– Chưa lập gia đình; ngoại hình cân đối, ưa nhìn, có sức khỏe, tâm lý tốt.
+<br><b>🏆 CƠ CẤU GIẢI THƯỞNG</b>
+<br>Danh hiệu chính
+<br>Hoa khôi Sinh viên Thanh lịch 2026
+<br>Nam vương Sinh viên Thanh lịch 2026
+<br>Danh hiệu phụ
+<br>Á khôi 1 – Á vương 1
+<br>Á khôi 2 – Á vương 2
+<br>Cùng nhiều giải thưởng phụ hấp dẫn khác
+<br><b>Quyền lợi và giải thưởng các thí sinh đạt danh hiệu sẽ nhận được:</b>
+<br>Giấy khen và giấy chứng nhận từ Ban Tổ chức
+<br>Vương miện dành cho Hoa khôi / Cúp dành cho Nam vương
+<br>Giải thưởng tiền mặt và hiện vật tài trợ (nếu có)
+<br>Cơ hội đồng hành cùng các chương trình, hoạt động của Học viện và Ban Tổ chức trong thời gian tới.
+<br><b>CUỘC THI SINH VIÊN THANH LỊCH 2026 MỞ ĐƠN ĐĂNG KÝ:</b>
+<br>Thời hạn đăng ký: 31/08/2026
+<br>Thời gian tổ chức cuộc thi dự kiến: Từ 15/9 – 20/10/2026
+<br>Địa điểm: Học viện Phụ nữ Việt Nam
+<br>ĐĂNG KÝ NGAY TẠI:
+https://forms.gle/JedCecEgfnH6zbEQ9</p>
+</div>
+
+<div class="content" id="tt3">
+    <h2>🩸NGÀY HỘI HIẾN MÁU "GIỌT NẮNG HỒNG XIII"] – GOM NHIỆT HUYẾT, KẾT YÊU THƯƠNG</h2>
+    <span>07/04/2026</span>
+    <hr>
+    <p>✨Vậy là hành trình “Giọt Nắng Hồng XIII” đã chính thức khởi động và đi được một nửa chặng đường. Ngay từ sáng sớm, Hội trường A1 của Học viện Phụ nữ Việt Nam đã tràn ngập không khí ấm áp và tràn đầy năng lượng.
+<br>🩸VWA đã được chứng kiến rất nhiều nụ cười rạng rỡ, những tinh thần tình nguyện tuyệt vời đến từ các quý thầy cô, cán bộ nhân viên và đông đảo các bạn sinh viên trong, ngoài Học viện. Những đơn vị máu quý giá được trao đi chính là minh chứng rõ nhất cho thông điệp: “GOM NHIỆT HUYẾT - KẾT YÊU THƯƠNG”.
+<br>🌈 HÀNH TRÌNH VẪN TIẾP TỤC VÀO BUỔI CHIỀU NAY!
+<br>Nếu bạn vì lịch học hay công việc mà lỡ hẹn với khung giờ sáng thì đừng lo, Đội máu VWA vẫn đang chờ đón những "giọt hồng" của các bạn vào buổi chiều nay. Hãy nhanh chân đến Hội trường A1 để cùng lan tỏa lòng nhân ái và nhận về những phần quà tri ân ý nghĩa nhé!
+<br>⏰ THÔNG TIN LỊCH HIẾN MÁU CHIỀU NAY:
+<br>Thời gian: 13h30 - 15h00 | Ngày 07/04/2026 (Thứ 3)
+<br>📍Địa điểm: Hội trường A1 - Học viện Phụ nữ Việt Nam (68 Nguyễn Chí Thanh, Phường Láng, Hà Nội)
+<br>💌 Mỗi giọt máu cho đi - Một cuộc đời ở lại. Sự góp mặt của bạn vào buổi chiều nay sẽ tiếp thêm nguồn sống cho rất nhiều người bệnh đang cần được giúp đỡ.
+<br>-----------------------------------------------------------------
+<br>🧡 ĐỘI THANH NIÊN VẬN ĐỘNG HIẾN MÁU HỌC VIỆN PHỤ NỮ VIỆT NAM 🧡
+<br>📌Link đăng ký hiến máu: https://bom.so/GNHXIII
+<br>🕖Thời gian: 07/04/2026
+<br>Sáng: 7h30 - 11h
+<br>Chiều: 13h30 - 15h
+<br>📍Địa điểm: Hội trường A1, Học viện Phụ nữ Việt Nam, 68 Đ. Nguyễn Chí Thanh, Phường Láng, Đống Đa, Hà Nội
+<br>🏡 Địa chỉ Fanpage: Đội Thanh niên vận động hiến máu Học viện Phụ nữ Việt Nam
+<br> 🌐 Link Fanpage: https://www.facebook.com/doimauhocvienphunu/                 
+<br>📱Tiktok: doimauphunu05            
+<br>📬 Gmail: doimauphunu@gmail.com    
+<br>☎️ Liên hệ: 0969608306 (Ms. Phương Thảo)
+</p>
+        <img src="anh4.jpg">
+</div>
+
+<div class="content" id="tt4">
+    <h2>Giải bóng đá nữ sinh viên Học viện Phụ nữ Việt Nam năm 2026</h2>
+    <span>17/01/2026</span>
+    <hr>
+    <p>Giải bóng đá nữ sinh viên năm 2026 được tổ chức nhằm chào mừng Ngày truyền thống Học sinh – Sinh viên Việt Nam (09/01/1950 – 09/01/2026), chào mừng Đại hội đại biểu toàn quốc Đảng Cộng sản Việt Nam lần thứ XIV, đồng thời chào mừng 96 năm Ngày thành lập Đảng Cộng sản Việt Nam (03/02/1930 – 03/02/2026). Đây không chỉ là một sân chơi thể thao lành mạnh mà còn là hoạt động chính trị – xã hội mang ý nghĩa giáo dục sâu sắc, góp phần bồi đắp lý tưởng sống, tinh thần trách nhiệm và niềm tự hào của sinh viên Học viện Phụ nữ Việt Nam.
+<br>Trong những năm qua, bên cạnh việc chú trọng đào tạo kiến thức chuyên môn, Học viện Phụ nữ Việt Nam luôn quan tâm đẩy mạnh các hoạt động văn hóa, văn nghệ, thể dục thể thao nhằm phát triển toàn diện cho người học. Giải bóng đá nữ sinh viên tiếp tục khẳng định định hướng đó, đồng thời tạo không gian để nữ sinh viên thể hiện sức trẻ, tinh thần đồng đội, sự tự tin và bản lĩnh trên sân cỏ.
+<br>Chương trình khai mạc Giải bóng đá nữ sinh viên Học viện Phụ nữ Việt Nam năm 2026 có sự hiện diện và cổ vũ trực tiếp của PGS.TS Trần Quang Tiến – Bí thư Đảng ủy, Giám đốc Học viện, cùng lãnh đạo các khoa, Phòng Công tác sinh viên, Đoàn Thanh niên Học viện. Sự có mặt đông đủ của lãnh đạo Học viện không chỉ thể hiện sự quan tâm sâu sắc đối với đời sống tinh thần, thể chất của sinh viên mà còn là nguồn động viên to lớn, tiếp thêm động lực để các đội bóng nữ thi đấu tự tin, cống hiến và bùng nổ trên sân cỏ.
+    </p>
+    <img src="anh10.png">
+    <p><b>Nghiêm túc tập luyện – Quyết tâm chinh phục giải đấu</b>
+<br>Trước thềm giải đấu, các đội bóng nữ đã tích cực tổ chức tập luyện một cách nghiêm túc, bài bản và đầy quyết tâm. Trên các sân tập trong khuôn viên Học viện và các sân bóng lân cận, hình ảnh những buổi tập diễn ra đều đặn vào sáng sớm hoặc cuối giờ chiều đã trở nên quen thuộc. Các cầu thủ không chỉ rèn luyện thể lực, kỹ năng cá nhân mà còn chú trọng phối hợp đội hình, xây dựng lối chơi gắn kết và linh hoạt.
+<br>Nhiều đội đã chủ động phân công ban huấn luyện, xây dựng chiến thuật phù hợp với lực lượng hiện có, đồng thời đề cao kỷ luật tập luyện và tinh thần đồng đội. Sự nghiêm túc trong khâu chuẩn bị cho thấy quyết tâm lớn của các đội bóng, coi giải đấu không chỉ là phong trào mà là một giải thể thao thực sự chất lượng, nơi mỗi cầu thủ đều nỗ lực cống hiến hết mình vì màu cờ sắc áo của ngành mình đại diện.
+<br>Tinh thần tập luyện hăng say ấy cũng góp phần lan tỏa hình ảnh nữ sinh viên Học viện Phụ nữ Việt Nam năng động, bản lĩnh, không ngại thử thách và luôn sẵn sàng vượt qua giới hạn của bản thân.
+</p>
+<img src="tt42.png">
+<p><b>Lan tỏa tinh thần thể thao và niềm tự hào sinh viên Học viện Phụ nữ Việt Nam</b>
+<br>Với sự chuẩn bị chu đáo, tinh thần thi đấu nghiêm túc của các đội bóng cùng sự quan tâm, đồng hành của Ban Giám đốc Học viện và các đơn vị chức năng, Giải bóng đá nữ sinh viên Học viện Phụ nữ Việt Nam năm 2026 hứa hẹn sẽ là một mùa giải sôi động, giàu cảm xúc và để lại nhiều dấu ấn đẹp.
+<br>Không chỉ dừng lại ở những bàn thắng hay kết quả chung cuộc, giải đấu còn góp phần lan tỏa tinh thần thể thao, đoàn kết, tự tin và niềm tự hào của sinh viên Học viện Phụ nữ Việt Nam, đúng với thông điệp “Cháy hết mình trên sân cỏ – Tỏa sáng bản lĩnh nữ sinh thời đại mới”.
+<br>Ban Tổ chức cho biết sẽ tiếp tục cập nhật lịch thi đấu và các thông tin liên quan trong thời gian tới, đồng thời mong nhận được sự cổ vũ nhiệt tình của đông đảo cán bộ, giảng viên và sinh viên để cùng tạo nên một mùa giải trọn vẹn, ý nghĩa và thành công.</p>
+</div>
+
+<div class="content" id="tt5">
+    <h2>Nữ sinh viên dân tộc Tày: Bảo vệ nền tảng tư tưởng của Đảng cần chạm đến cảm xúc của người trẻ</h2>
+    <span>14/05/2026</span>
+    <hr>
+    <p>"Hoàng Thị Hồng là một nữ sinh viên giàu nghị lực, luôn giữ tinh thần cầu thị và nghiêm túc trong học tập. Với môn học không phải là thế mạnh, em vẫn bền bỉ cố gắng, làm mọi việc bằng tất cả trách nhiệm và khả năng của mình. Ở Hồng luôn toát lên sự chỉn chu, hòa đồng và tinh thần biết lắng nghe khi làm việc cùng tập thể.
+
+Là sinh viên người dân tộc Tày nhưng ngay từ năm thứ nhất, Hồng đã cho thấy sự năng nổ và tự tin khi tích cực tham gia các tổ, đội, nhóm của trường. Em nhiệt huyết trong màu áo sinh viên tình nguyện và là gương mặt quen thuộc của Đội múa tại nhiều chương trình của Học viện Phụ nữ Việt Nam và Trung ương Hội LHPN Việt Nam. Chính sự bền bỉ và nhiệt huyết của tuổi trẻ đã giúp em trưởng thành hơn qua từng chặng đường.
+
+Tôi thật sự tự hào khi được chứng kiến hành trình trưởng thành của Hồng, đặc biệt là hình ảnh em tự tin tại Hội thi Báo cáo viên, tuyên truyền viên giỏi mới đây. Thành tích em đạt được hôm nay là kết quả xứng đáng cho quá trình học tập, rèn luyện nghiêm túc và những nỗ lực không ngừng nghỉ. Tôi tin rằng với bản lĩnh và khát vọng của mình, Hồng sẽ tiếp tục tỏa sáng, vững vàng và tiến xa hơn trên hành trình phía trước".
+
+Bà Đặng Hải Hà, giảng viên Khoa Truyền thông đa phương tiện, Học viện Phụ nữ Việt Nam; người được phân công dìu dắt sinh viên Hoàng Thị Hồng suốt 2 năm trước khi Hồng được kết nạp Đảng
+    </p>
+    <img src="anh16.png">
+    <a href="https://phunuvietnam.vn/nu-sinh-vien-dan-toc-tay-bao-ve-nen-tang-tu-tuong-cua-dang-can-cham-den-cam-xuc-cua-nguoi-tre-2382605131553389.htm?gidzl=Y-PhOF_Da2E6-sfX_DkM9eRpQ6VbZvGWdw4xD-lOmYEN-JypxOANSyEkRZ6zW9nzbFfkFZbD6CjrzSwG80&fbclid=IwY2xjawSAy_VleHRuA2FlbQIxMQBzcnRjBmFwcF9pZBAyMjIwMzkxNzg4MjAwODkyAAEehRXW-R_LPO48Da0LMnb8kp6LtoSJJuQiX8QBJHR3VBc6UHk4t1oOZc6ECws_aem_iY-FBLDjlqc9UQPSEC9JJQ">Xem thêm tại đây</a>
+
+</div>
+
+<div class="content" id="tt6">
+    <h2>Thông báo tổ chức thi chứng chỉ ứng dụng Công nghệ thông tin cho sinh viên Học viện Phụ nữ Việt Nam</h2>
+    <span>07/05/2026</span>
+    <hr>
+    <p>
+        <b>Học viện Phụ nữ Việt Nam thông báo về việc thi chứng chỉ ứng dụng Công nghệ thông tin cho sinh viên Học viện.</b>
+<br>Học viện thông báo đến sinh viên thời gian tổ chức thi lấy chứng chỉ ứng dụng Công nghệ thông tin như sau:
+<br>1. Thời gian dự kiến thi: 8h00 ngày 31 tháng 5 năm 2026
+<br>2. Đối tượng: Sinh viên Học viện Phụ nữ Việt Nam có nhu cầu
+<br>3. Địa điểm thi: Học viện Công nghệ Bưu chính Viễn thông
+<br>Thông tin chi tiết của Thông báo mời các em xem dưới đây:n trong Kỷ yếu hội thảo. Khối lượng nghiên cứu phong phú này hứa hẹn cung cấp nguồn tư liệu quan trọng, góp phần định hướng xây dựng chính sách và giải pháp nhằm thúc đẩy bình đẳng giới trong bối cảnh công nghệ thay đổi nhanh chóng.<br>
+    </p>
+    <img src="tt61.png">
+    <img src="tt62.png">
+    
+</div>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo-footer"><a href=""><img src="logo hvpnvn trắng.png" alt="Logo"></a></div>
+            <div class="footer-contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> Hotline: 024 3775 1705</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: vwa@vwa.edu.vn</p>
+                <p><i class="fa-solid fa-globe"></i> hvpnvn.edu.vn</p>
+            </div>
+            <div class="footer-campus">
+                <h3>Các cơ sở</h3>
+                <p><i class="fa-solid fa-building"></i> Trụ sở chính (Hà Nội): 68 Nguyễn Chí Thanh, P. Láng Thượng, Q. Đống Đa, Hà Nội.</p>
+                <p><i class="fa-solid fa-building"></i> Phân hiệu TP. Hồ Chí Minh: 620 Đỗ Xuân Hợp, P. Phước Long, TP. Hồ Chí Minh.</p>
+                <p><i class="fa-solid fa-building"></i> Cơ sở 3 (Hà Nội).</p>
+            </div>
+            <div class="footer-link">
+                <h3>Trang web</h3>
+                <ul>
+                    <li><a href="Gioithieu.html"><i class="fa-solid fa-circle-info"></i>Giới thiệu</a></li>
+                    <li><a href="Tuyensinh.html"><i class="fa-solid fa-file-signature"></i>Tuyển sinh</a></li>
+                    <li><a href="Daotao.html"><i class="fa-solid fa-graduation-cap"></i>Đào tạo</a></li>
+                    <li><a href="Tintuc.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Mạng xã hội</h3>
+                <a href="https://www.facebook.com/Hocvienphunu"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a href="https://www.tiktok.com/@hocvienphunuvietnam"><i class="fa-brands fa-tiktok"></i>Tiktok</a>
+                <a href="https://www.youtube.com/@vietnamwomensacademy8946/featured"><i class="fa-brands fa-youtube"></i>Youtube</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Học viện Phụ nữ Việt Nam. All Rights Reserved. LTD</p>
+    </div>
+
+    <script>
+        // Hamburger menu toggle
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('main-menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
+            const icon = toggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Sub-menu toggle on mobile tap (for items with children)
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('#main-menu > li > a').forEach(link => {
+                const parent = link.parentElement;
+                if (parent.querySelector('.sub-menu')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        parent.classList.toggle('open-sub');
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+// ẩn hết nội dung
+document.querySelectorAll(".content").forEach(c => {
+  c.style.display = "none";
+});
+
+// hiện đúng nội dung
+if (id) {
+  const target = document.getElementById(id);
+  if (target) {
+    target.style.display = "block";
+  }
+}    
+</script>
+
+
+</body>
+</html>

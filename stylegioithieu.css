@@ -1,0 +1,99 @@
+/* ===== PAGE LAYOUT ===== */
+.page-wrap {
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 16px;
+}
+.main {
+    display:flex;
+    gap:36px;
+    align-items:flex-start;
+    padding: 16px 0 40px;
+}
+.content { flex:3; min-width:0; }
+ 
+/* Breadcrumb */
+.breadcrumb {
+    font-size:13px; color:#777;
+    margin-bottom:14px; margin-top:14px;
+}
+.breadcrumb a { text-decoration:none; color:#777; }
+.breadcrumb .current { color:#0047C6; font-weight:500; }
+ 
+/* Content headings + text */
+.content h1 {
+    font-size:22px; margin:18px 0 14px;
+    font-weight:bold; color:#023fa7;
+}
+.content p {
+    line-height:1.8; text-align:justify;
+    font-size:16px;
+    font-family:'Times New Roman', Times, serif;
+}
+.content p span { font-weight:bold; }
+.content p b  { font-weight:bold; }
+ 
+/* Images inside content */
+.content img {
+    width:100%; max-width:860px;
+    height:auto; margin:20px 0;
+    box-shadow:0 0 20px rgba(1,1,29,0.25);
+    border-radius:8px;
+    display:block;
+}
+ 
+/* Box show/hide */
+.box { display:none; }
+.box.active { display:block; }
+ 
+/* ===== SIDEBAR ===== */
+.sidebar {
+    flex:1;
+    min-width:180px;
+    max-width:240px;
+    position:sticky;
+    top:90px;
+    margin-top:14px;
+}
+.sidebar-box {
+    background:#fff; border-radius:12px;
+    padding:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.09);
+}
+.sidebar-box h3 {
+    color:#023fa7; font-size:15px;
+    margin-bottom:10px;
+    border-left:4px solid #0047C6;
+    padding-left:10px;
+}
+.sidebar-box .menu { list-style:none; padding:0; }
+.sidebar-box .menu li { border-bottom:1px solid #eee; }
+.sidebar-box .menu li a {
+    display:block; padding:9px 6px;
+    text-decoration:none; color:#333; font-size:14px;
+}
+.sidebar-box .menu li a:hover { color:#0047C6; }
+.sidebar-box .menu li a.active { color:#0047C6; font-weight:700; }
+
+@media (max-width:1024px){
+    .sidebar { max-width:200px; }
+    .content h1 { font-size:20px; }
+    .content p   { font-size:15px; }
+}
+@media (max-width:768px){
+    .main { flex-direction:column; gap:24px; }
+    .sidebar {
+        position:static; max-width:100%;
+        width:100%; order:1;
+    }
+    .content { order:2; }
+}
+@media (max-width:480px){
+    .content h1 { font-size:18px; }
+    .content p   { font-size:14px; }
+ 
+    .breadcrumb { font-size:12px; }
+ 
+    .sidebar-box h3   { font-size:14px; }
+    .sidebar-box .menu li a { font-size:13px; }
+}

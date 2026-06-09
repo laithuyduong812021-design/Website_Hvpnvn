@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đào tạo Đại học</title>
+    <link rel="stylesheet" href="styleheader&footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+    font-size:13px; color:#777;
+    padding:14px 16px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.breadcrumb a { text-decoration:none; color:#777; }
+.breadcrumb .current { color:#0047C6; font-weight:500; }
+ 
+.main {
+    display:flex;
+    gap:28px;
+    max-width:1200px;
+    width:100%;
+    margin:0 auto 50px;
+    padding:0 16px;
+    align-items:flex-start;
+}
+ 
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width:240px;
+    flex-shrink:0;
+    position:sticky;
+    top:90px;
+}
+.sidebar ul {
+    list-style:none;
+    padding:0; margin:0;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.09);
+    overflow:hidden;
+}
+.sidebar li {
+    padding:12px 16px;
+    border-bottom:1px solid #f0f0f0;
+    cursor:pointer;
+    transition:0.2s;
+    font-size:14px;
+    color:#333;
+}
+.sidebar li:last-child { border-bottom:none; }
+.sidebar li:hover { background:#f0f6ff; color:#0047C6; }
+.sidebar li.active {
+    background:#0047C6;
+    color:#fff;
+    font-weight:700;
+}
+ 
+.sidebar-toggle {
+    display:none;
+    width:100%;
+    padding:12px 16px;
+    background:#0047C6;
+    color:white;
+    font-weight:700;
+    font-size:14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:left;
+    margin-bottom:4px;
+}
+.sidebar-toggle i { float:right; }
+ 
+/* ===== CONTENT ===== */
+.content { flex:1; min-width:0; }
+.content span { font-weight:bold; }
+ 
+.box {
+    display:none;
+    background:#fff;
+    padding:24px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    line-height:1.75;
+    font-size:15px;
+}
+.box.active { display:block; }
+.box a {
+    display:inline-block;
+    margin-top:10px;
+    color:#0047C6;
+    text-decoration:none;
+    font-weight:600;
+}
+.box a:hover { text-decoration:underline; }
+ 
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:20px;
+}
+.grid-card {
+    background:#f0f6ff;
+    padding:16px;
+    border-left:4px solid #0047C6;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    transition:0.3s;
+    cursor:pointer;
+}
+.grid-card:hover {
+    transform:translateY(-4px);
+    border-left-color:#025efd;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.grid-card h4 {
+    margin-bottom:8px;
+    color:#0047C6;
+    font-size:14px;
+}
+.grid-card p { font-size:14px; font-weight:600; }
+ 
+.card {
+    background:#fafafa;
+    padding:20px;
+    border-left:4px solid #0047C6;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    line-height:1.8;
+    font-size:14px;
+}
+
+@media (max-width:1024px) {
+    .sidebar { width:200px; }
+}
+@media (max-width:768px){
+    .main { flex-direction:column; gap:16px; }
+    .sidebar-toggle { display:block; }
+    .sidebar {
+        position:static; width:100%;
+        top:auto;
+    }
+    .sidebar ul {
+        display:none;
+        border-radius:0 0 14px 14px;
+    }
+    .sidebar ul.open { display:block; }
+    .grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+}
+@media (max-width:480px){
+    .grid { grid-template-columns:1fr; gap:10px; }
+    .grid-card h4 { font-size:13px; }
+    .box { padding:16px; font-size:14px; }
+    .card { padding:14px; font-size:13px; }
+    .sidebar li { font-size:13px; padding:10px 14px; }
+}
+    </style>
+</head>
+<body>
+    <!-- top header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <span>📍 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</span>
+                <span>📞 024 3775 9907</span>
+                <span>✉ vwa@vwa.edu.vn</span>
+            </div>
+            <div class="top-right">
+                <div class="find-top">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>⌕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <div class="logo">
+                    <img src="logo hvpnvn xanh.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <span id="hv">HỌC VIỆN</span>
+                    <span id="pnvn">PHỤ NỮ VIỆT NAM</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="main-menu">
+                <li><a href="index.html" >Trang chủ</a></li>
+                <li>
+                    <a href="Gioithieu.html" >Giới thiệu <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Gioithieu.html#tongquan">Tổng quan về học viện</a></li>
+                        <li><a href="Gioithieu.html#lichsu">Lịch sử hình thành</a></li>
+                        <li><a href="Gioithieu.html#sumenh">Sứ mệnh - Tầm nhìn</a></li>
+                        <li><a href="Gioithieu.html#cocau">Cơ cấu tổ chức</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Daotao.html" class="active">Đào tạo <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="Daotaodaihoc.html">Đào tạo Đại học <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="sub-menu">
+                                <li><a href="Daotaodaihoc.html#cntt">Công nghệ thông tin</a></li>
+                                <li><a href="Daotaodaihoc.html#ttdpt">Truyền thông đa phương tiện</a></li>
+                                <li><a href="Daotaodaihoc.html#ctxh">Công tác xã hội</a></li>
+                                <li><a href="Daotaodaihoc.html#tamly">Tâm lý học</a></li>
+                                <li><a href="Daotaodaihoc.html#luatkt">Luật kinh tế</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Daotaothacsi.html">Đào tạo Thạc sĩ</a></li>
+                        <li><a href="DaotaoTiensi.html">Đào tạo Tiến sĩ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tuyensinh.html">Tuyển sinh <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tuyensinh.html">Thông tin tuyển sinh</a></li>
+                        <li><a href="Tuyensinh.html#titlephuongthuc">Phương thức xét tuyển</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Nckh.html">Nghiên cứu khoa học <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Nckh.html">Đề tài nghiên cứu</a></li>
+                        <li><a href="Nckh.html">Hội thảo khoa học</a></li>
+                        <li><a href="https://tapchikhoahoc.hvpnvn.edu.vn/">Tạp chí khoa học</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tintuc.html">Tin tức <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tintuc.html">Tin tức mới</a></li>
+                        <li><a href="Tintuc.html">Sự kiện</a></li>
+                        <li><a href="Tintuc.html">Thông báo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Sinhvien.html">Sinh viên <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Sinhvien.html">Hoạt động sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Câu lạc bộ</a></li>
+                        <li><a href="Sinhvien.html">Hỗ trợ sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Việc làm - Thực tập</a></li>
+                    </ul>
+                </li>
+                <li><a href="Lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+    <div class="breadcrumb">
+                <a href="index.html">Trang chủ</a>
+                <span>›</span>
+                <a href="Daotao.html">Đào tạo</a>
+                <span>›</span>
+                <span class="current">Đào tạo Đại học</span>
+           </div>
+     <section class="main">
+        <div class="sidebar">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                Chọn ngành học <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <ul id="sidebarMenu">
+                <li data-id="qtkd" class="active">Ngành Quản trị kinh doanh</li>
+                <li data-id="qtdvdllh">Ngành Quản trị dịch vụ Du lịch và lữ hành</li>
+                <li data-id="ctxh">Ngành Công tác xã hội</li>
+                <li data-id="luat">Ngành Luật</li>
+                <li data-id="ttdpt">Ngành Truyền thông đa phương tiện</li>
+                <li data-id="gioi">Ngành Giới và phát triển</li>
+                <li data-id="luatkt">Ngành Luật Kinh tế</li>
+                <li data-id="kt">Ngành Kinh tế</li>
+                <li data-id="tamly">Ngành Tâm lý học</li>
+                <li data-id="cntt">Ngành Công nghệ thông tin</li>
+                <li data-id="mkt">Ngành Maketing</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="qtkd" class="box active">
+
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7340101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div>
+
+
+                    <div class="card">
+                     Sinh viên tốt nghiệp ngành <span>Quản trị kinh doanh</span> có đủ kiến thức, kỹ năng, năng lực ngoại ngữ, năng lực số và năng lực tự chủ, chịu trách nhiệm để làm việc trong các tổ chức kinh doanh ở mọi thành phần kinh tế, các cơ quan chính quyền, các tổ chức phi lợi nhuận hoặc tự khởi sự, khởi nghiệp kinh doanh với các nhóm vị trí có thể đảm nhận:<br>
+                    – Chuyên viên, nhà quản lý kinh doanh, bán hàng; nhà quản trị tác nghiệp ở các bộ phận chức năng chính của quản trị kinh doanh như: sản xuất, phòng marketing, nhân sự, vật tư, chất lượng, tài chính kế toán cho các doanh nghiệp trong nước và quốc tế.<br>
+                    – Chuyên viên phân tích và tư vấn quản trị kinh doanh trong các lĩnh vực cụ thể như: thị trường, tổ chức và nhân lực, marketing, tài chính, bất động sản, chứng khoán…<br>
+                    – Nhà kinh doanh, doanh nhân khởi sự, khởi nghiệp kinh doanh trong nước và quốc tế.<br>
+                    – Chuyên viên, nhà quản lý phụ trách các lĩnh vực về kinh tế, kinh doanh trong các tổ chức nhà nước, tổ chức phi lợi nhuận, tổ chức quốc tế.<br>
+                    – Nghiên cứu viên, trợ giảng/giảng viên về quản trị kinh doanh nói chung và các lĩnh vực chuyên môn thuộc quản trị kinh doanh nói riêng tại các viện, trung tâm nghiên cứu, các cơ sở đào tạo hoặc các cơ quan hoạch định chính sách kinh doanh.<br>
+                    Cơ hội học tập của người học sau khi tốt nghiệp: Sinh viên tốt nghiệp ngành Quản trị kinh doanh có đủ kiến thức và kỹ năng để tiếp tục học tập nâng cao trình độ ở các chương trình bậc thạc sĩ, tiến sĩ.<br>
+                    <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-quan-tri-kinh-doanh/">Xem thêm </a>
+                    </div>
+            </div>
+
+            <div id="qtdvdllh" class="box">
+
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7810103</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div>
+
+                <div class="card">
+                 Với những kiến thức chuyên sâu của ngành <span>Quản trị dịch vụ du lịch và lữ hành</span>, sinh viên sau khi ra trường có thể đảm nhiệm nhiều vị trí công việc khác nhau liên quan đến dịch vụ du lịch, tại doanh nghiệp du lịch trong nước, ASEAN, quốc tế, cụ thể:<br>
+                 Chuyên viênở các bộ phận: hướng dẫn du lịch, điều hành tour, marketing, quan hệ khách hàng, tổ chức sự kiện, lễ tân, buồng phòng, phục vụ ăn uống…; nhà quản lý tại doanh nghiệp lữ hành, khách sạn, khu nghỉ dưỡng và các doanh nghiệp dịch vụ du lịch khác…<br>
+                 Cán bộ, chuyên viên các cơ quan quản lý nhà nước về du lịch từ địa phương đến Trung ương; các ban phụ trách về phát triển du lịch và khách sạn của các tổ chức chính trị xã hội;<br>
+                 Nghiên cứu viên, giảng viên tại các trường Đại học/Học viện/Cao đẳng, các tổ chức nghiên cứu trong các lĩnh vực du lịch và khách sạn;<br>
+                 Tham gia sáng lập, tự khởi nghiệp và điều hành doanh nghiệp du lịch và lữ hành.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/quan-tri-du-lich-va-lu-hanh/">Xem thêm </a>
+                </div>
+                </div>
+
+            <div id="ctxh" class="box">
+
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7760101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div>
+
+                <div class="card">
+                 Với những kiến thức cơ bản về khoa học xã hội, tự nhiên, chính trị, pháp luật, giới và bình đẳng giới, kiến thức chuyên sâu của ngành <span>Công tác xã hội</span>, sau khi tốt nghiệp, sinh viên có thể đảm nhiệm nhiều vị trí công việc khác nhau, cụ thể:<br>
+                 Cán bộ, chuyên viên, nghiên cứu viên trong các cơ quan chuyên trách của các tổ chức chính trị – xã hội các cấp từ trung ương đến địa phương.<br>
+                 Cán bộ hoạch định chính sách xã hội, chuyên viên, nghiên cứu viên trong các cơ quancác cấp từ trung ương đến địa phương.<br>
+                 Nghiên cứu viên, cán bộ trong các trường đại học, học viện, viện nghiên cứu, trung tâm, các trường cao đẳng, giảng viên các trường trung cấp chuyên nghiệp…<br>
+                 Nhân viên công tác xã hội, kiểm huấn viên, nghiên cứu viên, chuyên viên trong các cơ sở cung cấp dịch vụ xã hội thuộc cơ quan nhà nước, tư nhân, phi chính phủ, quốc tế…<br>
+                 Cán bộ, chuyên viên làm việc độc lập tại các cơ quan, ban ngành, đoàn thể hoặc thuộc các các lĩnh vực: y tế, giáo dục, pháp luật, phúc lợi xã hội…; công chức làm việc tại các cơ quan/tổ chức địa phương, áp dụng chuyển đổi số, công nghệ 4.0 vào các lĩnh vực công việc chuyên môn.<br>
+                 Chủ các cơ sở trợ giúp xã hội/các cơ sở trợ giúp đối tượng yếu thế, tự khởi nghiệp trong các lĩnh vực liên quan đến Công tác xã hội.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-cong-tac-xa-hoi/">Xem thêm </a>
+                </div>
+            </div>
+
+            <div id="luat" class="box">
+
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7380101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div>
+
+                <div class="card">
+                 Sau khi tốt nghiệp, người học ngành <span>Luật</span> có thể đảm nhận các vị trí việc làm tại cơ quan nhà nước, tổ chức chính trị, tổ chức xã hội – nghề nghiệp, các tổ chức ngoài nhà nước có nhu cầu tuyển dụng nhân lực có trình độ cử nhân luật. Cụ thể:<br>
+                 Người học có thể trở thành cán bộ, công chức, viên chức tại các cơ quan quyền lực nhà nước (Quốc hội, Hội đồng nhân dân các cấp); cơ quan hành chính (Chính phủ, Bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, Công an, Thuế, Hải quan, Kiểm lâm, Biên phòng, Quản lý xuất nhập cảnh, Thanh tra…); cơ quan giúp việc Chủ tịch nước; hệ thống Tòa án, Viện kiểm sát, các cơ quan thi hành án, đơn vị sự nghiệp của Đảng Cộng sản Việt Nam, Mặt trận Tổ quốc Việt Nam và các cơ quan nhà nước khác.<br>
+                 Người học có thể đảm nhiệm vị trí chuyên viên pháp chế, tư vấn pháp lý, hành chính, nhân sự… tại các tổ chức tư vấn, dịch vụ pháp lý như văn phòng luật sư, văn phòng công chứng, tổ chức trọng tài, văn phòng thừa phát lại, cũng như tại các doanh nghiệp, hợp tác xã, hộ kinh doanh ở nhiều lĩnh vực khác nhau, và các tổ chức ngoài nhà nước khác.<br>
+                 Người học có thể làm việc tại các tổ chức giáo dục nghề nghiệp và sau khi hoàn thiện bằng cấp có thể trở thành giảng viên của các cơ sở đào tạo trình độ đại học.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-luat/">Xem thêm </a>
+                 </div>
+            </div>
+            <div id="ttdpt" class="box">
+
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7320104</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+
+                <div class="card">
+                 Sau khi tốt nghiệp ngành <span>Truyền thông đa phương tiện</span> sinh viên có nhiều cơ hội lựa chọn vị trí việc làm, cụ thể:<br>
+                 – Chuyên viên thiết kế, kỹ thuật tại các cơ quan, doanh nghiệp như: Chuyên viên thiết kế đồ họa, thiết kế trò chơi điện tử, thiết kế đồ họa chuyển động, phim quảng cáo, kỹ thuật viên dựng audio – video.<br>
+                 – Chuyên viên tư vấn truyền thông đa phương tiện, quản lý các dự án đa phương tiện, quan hệ công chúng, quảng cáo,  tổ chức sự kiện, quản trị truyền thông, quản trị trang thông tin điện tử, mạng xã hội tại các tổ chức truyền thông.<br>
+                 – Phóng viên, biên tập viên, người dẫn chương trình, nhà sáng tạo nội dung số, sản xuất sản phẩm đa phương tiện tại các cơ quan báo chí truyền thông, cán bộ tại các cơ quan quản lý nhà nước về truyền thông, trung tâm văn hoá sáng tạo.<br>
+                 – Cán bộ phụ trách tuyên truyền, chuyên viên quản lý truyền thông trong hệ thống chính trị – xã hội từ trung ương đến địa phương.<br>
+                 – Chuyên viên truyền thông trong các tổ chức quốc tế, tổ chức phi chính phủ, các tổ chức hữu nghị.<br>
+                 – Khởi nghiệp và làm chủ doanh nghiệp sản xuất, kinh doanh sản phẩm truyền thông.<br>
+                 – Cán bộ nghiên cứu, giảng dạy về lĩnh vực truyền thông tại các Viện, Trung tâm nghiên cứu, các cơ sở đào tạo đại học, cao đẳng hoặc học nâng cao trình độ ở bậc sau đại học.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-truyen-thong-da-phuong-tien/">Xem thêm </a>
+                </div>
+                </div>
+
+            <div id="gioi" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7310399</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+                 <div class="card">
+                 Sinh viên tốt nghiệp ngành <span>Giới và Phát triển</span> có nền tảng kiến thức chuyên sâu, kỹ năng thực hành vững vàng và thái độ nghề nghiệp phù hợp để đảm nhiệm các vị trí công việc trong các lĩnh vực liên quan đến giới, phát triển và các vấn đề xã hội – con người. Cụ thể:<br>
+                 – Cán bộ, chuyên viên về giới và phát triển tại các cơ quan Đảng, Nhà nước, Mặt trận Tổ quốc và các tổ chức chính trị – xã hội từ Trung ương đến địa phương;<br>
+                 – Chuyên viên trong các cơ quan quản lý nhà nước thuộc các bộ, sở, ngành liên quan như Bộ Nội vụ, Bộ Giáo dục và Đào tạo, Bộ Y tế, Bộ Văn hóa, Thể thao và Du lịch, với nhiệm vụ hoạch định, triển khai chính sách có lồng ghép giới; các công việc liên quan đến hành chính, nhân sự; thực hiện các chương trình, dự án phát triển;<br>
+                 – Trợ lý dự án, điều phối viên, cán bộ chương trình/dự án làm việc tại các tổ chức Liên Hợp Quốc, tổ chức quốc tế, tổ chức phi chính phủ (NGOs) trong, ngoài nước;<br>
+                 – Cán bộ truyền thông, biên tập viên tại các cơ quan báo chí, truyền thông đại chúng và nền tảng số, chuyên phụ trách nội dung về giới, quyền con người, phát triển bền vững;<br>
+                 – Nghiên cứu viên, cán bộ phân tích chính sách tại các viện nghiên cứu, trung tâm khoa học và công nghệ, các trường đại học và cơ sở giáo dục nghiên cứu về giới và phát triển;<br>
+                 – Giáo viên giảng dạy về giới, kỹ năng sống, kỹ năng mềm tại các cơ sở giáo dục, trường đào tạo nghề;<br>
+                 – Chuyên viên nhân sự, cán bộ xã hội làm việc tại các cơ quan, tổ chức, doanh nghiệp trong nước và quốc tế, đặc biệt trong các doanh nghiệp có chính sách phát triển bền vững và trách nhiệm xã hội;<br>
+                 – Khởi nghiệp trong các lĩnh vực liên quan đến giới, phát triển cộng đồng, truyền thông – giáo dục – đào tạo;<br>
+                 – Tư vấn giới, tư vấn phát triển, tư vấn xã hội; chuyên gia tư vấn độc lập liên quan đến lĩnh vực chuyên môn…<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-gioi-va-phat-trien/">Xem thêm </a>
+                </div>
+                </div>
+
+            <div id="luatkt" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7380107</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Sau khi tốt nghiệp, người học ngành <span>Luật Kinh tế</span> có thể đảm nhận các vị trí việc làm tại cơ quan nhà nước, tổ chức chính trị, tổ chức xã hội – nghề nghiệp, các tổ chức ngoài nhà nước có nhu cầu tuyển dụng nhân lực có trình độ cử nhân luật kinh tế. Cụ thể:<br>
+                 Người học có thể trở thành cán bộ, công chức, viên chức tại các cơ quan quyền lực nhà nước (Quốc hội, Hội đồng nhân dân các cấp); cơ quan hành chính (Chính phủ, Bộ, cơ quan ngang bộ, cơ quan thuộc Chính phủ, Công an, Thuế, Hải quan, Kiểm lâm, Biên phòng, Quản lí xuất nhập cảnh, Thanh tra…); cơ quan giúp việc Chủ tịch nước; hệ thống Tòa án, Viện kiểm sát, các cơ quan thi hành án, đơn vị sự nghiệp của Đảng Cộng sản Việt Nam, Mặt trận Tổ quốc Việt Nam và các cơ quan nhà nước khác.<br>
+                 Người học có thể đảm nhiệm vị trí việc làm là chuyên viên pháp chế doanh nghiệp, ngân hàng; chuyên viên tư vấn đầu tư, hợp đồng, thuế, bảo hiểm; nhân viên tư vấn pháp luật thương mại quốc tế, hiệp định tự do thương mại, mua bán sáp nhập doanh nghiệp và các vị trí việc làm có tính chất tương tự.<br>
+                 Người học có thể làm việc tại các tổ chức giáo dục nghề nghiệp và sau khi hoàn thiện bằng cấp có thể trở thành giảng viên của các cơ sở đào tạo trình độ đại học.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/luat-kinh-te/">Xem thêm </a>
+                </div>
+            </div>
+            <div id="kt" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7310101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Sinh viên tốt nghiệp chương trình cử nhân <span>Kinh tế</span> có khả năng làm việc tại những vị trí công việc như sau:<br>
+                 Có đủ năng lực để làm việc tại các tổ chức kinh tế chính trị xã hội mang tính liên ngành; các tổ chức tư vấn kinh tế, các tổ chức hành chính sự nghiệp, các thể chế kinh tế quốc tế tại Việt Nam; có thể đảm nhiệm các công việc như trợ lý phân tích, phản biện và hoạch định chính sách kinh tế; trợ lý tư vấn giám sát việc triển khai các quyết định quản lý; triển vọng có thể trở thành các chuyên gia phân tích chính sách, các nhà tư vấn chuyên nghiệp, các nhà quản lý kinh tế học phần kinh tế học, kinh tế chính trị quốc tế, các lý thuyết về thể chế kinh tế; triển vọng có thể trở thành các nghiên cứu viên, giảng viên về kinh tế học.<br>
+                 Có khả năng phát triển để trở thành các vị trí lãnh đạo, quản lý tại các doanh nghiệp Việt Nam và doanh nghiệp nước ngoài đang hoạt động trong môi trường kinh doanh của Việt Nam và quốc tế;<br>
+                 Là chuyên viên chuyên trách tại các doanh nghiệp, tổ chức kinh tế: Có khả năng đảm nhận các chuyên môn tại các vị trí liên quan đến kinh doanh xuất nhập khẩu, công việc tại các doanh nghiệp có vốn đầu tư nước ngoài, công việc tại các tập đoàn kinh tế quốc tế, công việc tại các doanh nghiệp đầu tư tài chính, chứng khoán, bảo hiểm và ngân hàng. Chuyên viên, quản lý trong các cơ quan quản lý nhà nước về kinh tế;<br>
+                 Là chuyên viên tại các ban/ cơ quan phụ trách về phát triển kinh tế cấp Trung ương, cấp tỉnh và cấp xã/ phường.<br>
+                 Là nghiên cứu viên và giảng viên trong các trường đại học, các viện nghiên cứu đào tạo và nghiên cứu về lĩnh vực kinh tế và quản lý kinh tế;<br>
+                 Phát triển trở thành các nhà tư vấn độc lập về các vấn đề liên quan đến kinh tế, đầu tư.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-kinh-te/">Xem thêm </a>
+                 </div>
+            </div>
+
+            <div id="tamly" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7310401</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+                 <div class="card">
+                 Sau khi tốt nghiệp ngành <span>Tâm lý</span>, người học có thể trở thành:<br>
+                 – Chuyên viên tham vấn học đường trong các các trường học.<br>
+                 – Cán bộ, chuyên viên tâm lý trong các bệnh viện và cơ sở y tế khác.<br>
+                 – Chuyên gia, giảng viên trong các trường đại học, cao đẳng.<br>
+                 – Giáo viên can thiệp của các trung tâm giáo dục.<br>
+                 – Nghiên cứu viên trong các trường đại học, cao đẳng; trung tâm nghiên cứu, viện nghiên cứu.<br>
+                 – Chuyên viên của: các trung tâm bảo trợ xã hội, phòng công tác xã hội; phòng ban của các trường đại học, cao đẳng và văn phòng các công ty, trung tâm, đài phát thanh, đài truyền hình;<br>
+                 – Chuyên viên trong các ban, đơn vị thuộc các cơ quan, Đoàn thanh niên, các tổ chức chính trị xã hội các cấp địa phương.<br>
+                 – Chuyên viên, nghiên cứu viên, cộng tác viên, tình nguyện viên kiểm huấn viên… trong các tổ chức phi chính phủ trong nước và nước ngoài, các dự án quốc tế.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/tam-ly-hoc/">Xem thêm </a>
+                 </div>
+            </div>
+            <div id="cntt" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7480201</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 Sau khi tốt nghiệp ngành <span>Công nghệ thông tin</span> tại Học viện Phụ nữ Việt Nam, sinh viên có thể đảm nhận các vị trí sau trong các tổ chức, doanh nghiệp, và cơ quan thuộc nhiều lĩnh vực khác nhau:<br>
+                 – Lập trình viên: Tham gia phát triển phần mềm ứng dụng trên các nền tảng APP, ứng dụng web, hoặc ứng dụng di động.<br>
+                 – Chuyên viên phân tích và thiết kế hệ thống: Phân tích yêu cầu, thiết kế và triển khai các giải pháp công nghệ thông tin như hệ thống thông minh, ứng dụng IoT, hoặc nền tảng thương mại điện tử.<br>
+                 – Quản trị hệ thống mạng: Quản lý, vận hành, và bảo trì cơ sở hạ tầng mạng, hệ thống máy tính, đảm bảo an toàn và bảo mật thông tin.<br>
+                 – Chuyên viên phân tích dữ liệu: Thực hiện phân tích dữ liệu lớn, khai thác dữ liệu để hỗ trợ ra quyết định trong kinh doanh và các lĩnh vực xã hội.<br>
+                 – Chuyên viên tư vấn công nghệ: Cung cấp dịch vụ tư vấn giải pháp công nghệ thông tin cho doanh nghiệp, tổ chức, hỗ trợ chuyển đổi số và tối ưu hóa quy trình.<br>
+                 – Giáo viên Tin học: Giảng dạy Tin học tại các trường phổ thông, trung cấp, cao đẳng, đại học.<br>
+                 – Quản lý dự án CNTT: Điều phối và quản lý các dự án phát triển phần mềm hoặc tin học hóa cho tổ chức.<br>
+                 – Chuyên viên nội dung số: Thiết kế, xử lý, và quản lý nội dung số cho các cơ quan truyền thông, doanh nghiệp, hoặc nền tảng trực tuyến.<br>
+                 – Nhà sáng tạo khởi nghiệp: Phát triển các ý tưởng khởi nghiệp sáng tạo trong lĩnh vực công nghệ thông tin, chẳng hạn như ứng dụng AI, IoT…<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-cong-nghe-thong-tin/">Xem thêm </a>
+                </div>
+                </div>
+
+            <div id="mkt" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>7340115</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Cử nhân</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>4 năm</p>
+                    </div>
+                 </div> 
+                 <div class="card">
+                 Sinh viên tốt nghiệp ngành <span>Marketing</span> có thể đảm nhiệm các vị trí từ nhân viên marketing đến các vị trí quản lý marketing cấp trung và cấp cao ở cấp độ quốc gia, quốc tế trong các tổ chức kinh doanh ở mọi thành phần kinh tế, cơ quan chính quyền và các tổ chức phi lợi nhuận, cụ thể các vị trí công việc như sau:<br>
+                 Trong doanh nghiệp, tổ chức kinh doanh lợi nhuận/phi lợi nhuận:<br>
+                 – Truyền thông /tiếp thị: Nghiên cứu thị trường, sáng tạo nội dung, quảng cáo, thiết kế hình ảnh, quan hệ công chúng, tiếp thị kỹ thuật số, quản lý thương hiệu, quản lý sự kiện, marketing thương mại điện tử…<br>
+                 – Phân tích dữ liệu: Phân tích dữ liệu Marketing, nghiên cứu thị trường và chiến lược marketing dựa trên dữ liệu.<br>
+                 – Kinh doanh/bán hàng: Kinh doanh, bán hàng, tư vấn ..<br>
+                 – Dịch vụ khách hàng: Chăm sóc khách hàng, quản lý quan hệ khách hàng<br>
+                 – Quản lý Marketing: Ở các vị trí từ cấp thấp đến cấp trung, cấp cao.<br>
+                 Viện, trung tâm nghiên cứu, có sở giáo dục đào tạo<br>
+                 – Nghiên cứu viên, trợ giảng/giảng viên về marketing<br>
+                 – Nhà khoa học dữ liệu ứng dụng trong marketing<br>
+                 Cơ hội học tập của người học sau khi tốt nghiệp<br>
+                 Sinh viên tốt nghiệp ngành Marketing có đủ kiến thức và kỹ năng để tiếp tục học tập nâng cao trình độ ở các chương trình bậc thạc sĩ, tiến sĩ chuyên ngành Marketing, Phân tích dữ liệu, Khoa học dữ liệu hoặc Quản trị kinh doanh.<br>
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/nganh-marketing/">Xem thêm </a>
+                 </div>
+            </div>
+
+        </div>
+     </section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo-footer"><a href=""><img src="logo hvpnvn trắng.png" alt="Logo"></a></div>
+            <div class="footer-contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> Hotline: 024 3775 1705</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: vwa@vwa.edu.vn</p>
+                <p><i class="fa-solid fa-globe"></i> hvpnvn.edu.vn</p>
+            </div>
+            <div class="footer-campus">
+                <h3>Các cơ sở</h3>
+                <p><i class="fa-solid fa-building"></i> Trụ sở chính (Hà Nội): 68 Nguyễn Chí Thanh, P. Láng Thượng, Q. Đống Đa, Hà Nội.</p>
+                <p><i class="fa-solid fa-building"></i> Phân hiệu TP. Hồ Chí Minh: 620 Đỗ Xuân Hợp, P. Phước Long, TP. Hồ Chí Minh.</p>
+                <p><i class="fa-solid fa-building"></i> Cơ sở 3 (Hà Nội).</p>
+            </div>
+            <div class="footer-link">
+                <h3>Trang web</h3>
+                <ul>
+                    <li><a href="Gioithieu.html"><i class="fa-solid fa-circle-info"></i>Giới thiệu</a></li>
+                    <li><a href="Tuyensinh.html"><i class="fa-solid fa-file-signature"></i>Tuyển sinh</a></li>
+                    <li><a href="Daotao.html"><i class="fa-solid fa-graduation-cap"></i>Đào tạo</a></li>
+                    <li><a href="Tintuc.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Mạng xã hội</h3>
+                <a href="https://www.facebook.com/Hocvienphunu"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a href="https://www.tiktok.com/@hocvienphunuvietnam"><i class="fa-brands fa-tiktok"></i>Tiktok</a>
+                <a href="https://www.youtube.com/@vietnamwomensacademy8946/featured"><i class="fa-brands fa-youtube"></i>Youtube</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Học viện Phụ nữ Việt Nam. All Rights Reserved. LTD</p>
+    </div>
+
+
+<script>
+    // ---- Hamburger nav ----
+    const toggle = document.getElementById('menuToggle');
+    const menu   = document.getElementById('main-menu');
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        const icon = toggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+    });
+    // Mobile sub-menu tap
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('#main-menu > li > a').forEach(link => {
+            const parent = link.parentElement;
+            if (parent.querySelector('.sub-menu')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    parent.classList.toggle('open-sub');
+                });
+            }
+        });
+    }
+ 
+    // ---- Sidebar: desktop click / mobile toggle ----
+    const menuItems  = document.querySelectorAll('.sidebar li');
+    const boxes      = document.querySelectorAll('.box');
+    const sideToggle = document.getElementById('sidebarToggle');
+    const sideMenu   = document.getElementById('sidebarMenu');
+ 
+    // Toggle button for mobile
+    sideToggle.addEventListener('click', () => {
+        sideMenu.classList.toggle('open');
+        const icon = sideToggle.querySelector('i');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+    });
+ 
+    // Item click
+    menuItems.forEach(item => {
+        item.addEventListener('click', function () {
+            menuItems.forEach(i => i.classList.remove('active'));
+            boxes.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const id = this.getAttribute('data-id');
+            const target = document.getElementById(id);
+            if (target) target.classList.add('active');
+ 
+            // Update toggle label on mobile
+            sideToggle.childNodes[0].textContent = this.textContent + ' ';
+ 
+            // Close sidebar menu on mobile after selection
+            if (window.innerWidth <= 768) {
+                sideMenu.classList.remove('open');
+                const icon = sideToggle.querySelector('i');
+                icon.classList.add('fa-chevron-down');
+                icon.classList.remove('fa-chevron-up');
+            }
+        });
+    });
+ 
+    // ---- Hash-based deep linking (e.g. Daotaodaihoc.html#cntt) ----
+    function openFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+        const target = document.querySelector(`.sidebar li[data-id="${hash}"]`);
+        if (target) target.click();
+    }
+    window.addEventListener('load', openFromHash);
+    window.addEventListener('hashchange', openFromHash);
+</script>
+
+
+</body>
+</html>

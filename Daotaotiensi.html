@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đào tạo Tiến sĩ</title>
+    <link rel="stylesheet" href="styleheader&footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+/* ===== BREADCRUMB ===== */
+.breadcrumb {
+    font-size:13px; color:#777;
+    padding:14px 16px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.breadcrumb a { text-decoration:none; color:#777; }
+.breadcrumb .current { color:#0047C6; font-weight:500; }
+ 
+.main {
+    display:flex;
+    gap:28px;
+    max-width:1200px;
+    width:100%;
+    margin:0 auto 50px;
+    padding:0 16px;
+    align-items:flex-start;
+}
+ 
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width:240px;
+    flex-shrink:0;
+    position:sticky;
+    top:90px;
+}
+.sidebar ul {
+    list-style:none;
+    padding:0; margin:0;
+    background:#fff;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.09);
+    overflow:hidden;
+}
+.sidebar li {
+    padding:12px 16px;
+    border-bottom:1px solid #f0f0f0;
+    cursor:pointer;
+    transition:0.2s;
+    font-size:14px;
+    color:#333;
+}
+.sidebar li:last-child { border-bottom:none; }
+.sidebar li:hover { background:#f0f6ff; color:#0047C6; }
+.sidebar li.active {
+    background:#0047C6;
+    color:#fff;
+    font-weight:700;
+}
+ 
+.sidebar-toggle {
+    display:none;
+    width:100%;
+    padding:12px 16px;
+    background:#0047C6;
+    color:white;
+    font-weight:700;
+    font-size:14px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:left;
+    margin-bottom:4px;
+}
+.sidebar-toggle i { float:right; }
+ 
+/* ===== CONTENT ===== */
+.content { flex:1; min-width:0; }
+.content span { font-weight:bold; }
+ 
+.box {
+    display:none;
+    background:#fff;
+    padding:24px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    line-height:1.75;
+    font-size:15px;
+}
+.box.active { display:block; }
+.box a {
+    display:inline-block;
+    margin-top:10px;
+    color:#0047C6;
+    text-decoration:none;
+    font-weight:600;
+}
+.box a:hover { text-decoration:underline; }
+ 
+.grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:20px;
+}
+.grid-card {
+    background:#f0f6ff;
+    padding:16px;
+    border-left:4px solid #0047C6;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    transition:0.3s;
+    cursor:pointer;
+}
+.grid-card:hover {
+    transform:translateY(-4px);
+    border-left-color:#025efd;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.grid-card h4 {
+    margin-bottom:8px;
+    color:#0047C6;
+    font-size:14px;
+}
+.grid-card p { font-size:14px; font-weight:600; }
+ 
+.card {
+    background:#fafafa;
+    padding:20px;
+    border-left:4px solid #0047C6;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    line-height:1.8;
+    font-size:14px;
+}
+
+@media (max-width:1024px) {
+    .sidebar { width:200px; }
+}
+@media (max-width:768px){
+    .main { flex-direction:column; gap:16px; }
+    .sidebar-toggle { display:block; }
+    .sidebar {
+        position:static; width:100%;
+        top:auto;
+    }
+    .sidebar ul {
+        display:none;
+        border-radius:0 0 14px 14px;
+    }
+    .sidebar ul.open { display:block; }
+    .grid { grid-template-columns:repeat(3,1fr); gap:10px; }
+}
+@media (max-width:480px){
+    .grid { grid-template-columns:1fr; gap:10px; }
+    .grid-card h4 { font-size:13px; }
+    .box { padding:16px; font-size:14px; }
+    .card { padding:14px; font-size:13px; }
+    .sidebar li { font-size:13px; padding:10px 14px; }
+}
+    </style>
+</head>
+<body>
+    <!-- top header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-left">
+                <span>📍 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</span>
+                <span>📞 024 3775 9907</span>
+                <span>✉ vwa@vwa.edu.vn</span>
+            </div>
+            <div class="top-right">
+                <div class="find-top">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button>⌕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+    <header id="header">
+        <div class="container">
+            <a href="index.html" class="logo-area">
+                <div class="logo">
+                    <img src="logo hvpnvn xanh.png" alt="Logo">
+                </div>
+                <div class="title">
+                    <span id="hv">HỌC VIỆN</span>
+                    <span id="pnvn">PHỤ NỮ VIỆT NAM</span>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul id="main-menu">
+                <li><a href="index.html" >Trang chủ</a></li>
+                <li>
+                    <a href="Gioithieu.html" >Giới thiệu <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Gioithieu.html#tongquan">Tổng quan về học viện</a></li>
+                        <li><a href="Gioithieu.html#lichsu">Lịch sử hình thành</a></li>
+                        <li><a href="Gioithieu.html#sumenh">Sứ mệnh - Tầm nhìn</a></li>
+                        <li><a href="Gioithieu.html#cocau">Cơ cấu tổ chức</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Daotao.html" class="active">Đào tạo <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="Daotaodaihoc.html">Đào tạo Đại học <i class="fa-solid fa-chevron-right"></i></a>
+                            <ul class="sub-menu">
+                                <li><a href="Daotaodaihoc.html#cntt">Công nghệ thông tin</a></li>
+                                <li><a href="Daotaodaihoc.html#ttdpt">Truyền thông đa phương tiện</a></li>
+                                <li><a href="Daotaodaihoc.html#ctxh">Công tác xã hội</a></li>
+                                <li><a href="Daotaodaihoc.html#tamly">Tâm lý học</a></li>
+                                <li><a href="Daotaodaihoc.html#luatkt">Luật kinh tế</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="Daotaothacsi.html">Đào tạo Thạc sĩ</a></li>
+                        <li><a href="DaotaoTiensi.html">Đào tạo Tiến sĩ</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tuyensinh.html">Tuyển sinh <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tuyensinh.html">Thông tin tuyển sinh</a></li>
+                        <li><a href="Tuyensinh.html#titlephuongthuc">Phương thức xét tuyển</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Nckh.html">Nghiên cứu khoa học <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Nckh.html">Đề tài nghiên cứu</a></li>
+                        <li><a href="Nckh.html">Hội thảo khoa học</a></li>
+                        <li><a href="https://tapchikhoahoc.hvpnvn.edu.vn/">Tạp chí khoa học</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Tintuc.html">Tin tức <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Tintuc.html">Tin tức mới</a></li>
+                        <li><a href="Tintuc.html">Sự kiện</a></li>
+                        <li><a href="Tintuc.html">Thông báo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Sinhvien.html">Sinh viên <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="sub-menu">
+                        <li><a href="Sinhvien.html">Hoạt động sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Câu lạc bộ</a></li>
+                        <li><a href="Sinhvien.html">Hỗ trợ sinh viên</a></li>
+                        <li><a href="Sinhvien.html">Việc làm - Thực tập</a></li>
+                    </ul>
+                </li>
+                <li><a href="Lienhe.html">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+    <div class="breadcrumb">
+                <a href="index.html">Trang chủ</a>
+                <span>›</span>
+                <a href="Daotao.html">Đào tạo</a>
+                <span>›</span>
+                <span class="current">Đào tạo Tiến sĩ</span>
+           </div>
+     <section class="main">
+        <div class="sidebar">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                Chọn ngành học <i class="fa-solid fa-chevron-down"></i>
+            </button>
+
+            <ul id="sidebarMenu">
+                <li data-id="qtkd" class="active">Ngành Quản trị kinh doanh</li>
+                <li data-id="ctxh">Ngành Công tác xã hội</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="qtkd" class="box active">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>9340101 </p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Bằng tiến sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>3 năm với bằng thạc sĩ<br>
+                            4 năm với bằng đại học</p>
+                    </div>
+                 </div> 
+                 <div class="card">
+                 Người học sau khi tốt nghiệp có khả năng tự học, tự nghiên cứu, tự cập nhật kiến thức mới về các vấn đề chung của lĩnh vực kinh tế xã hội và các vấn đề đặc thù của ngành quản trị kinh doanh.<br>  
+                 Người học sau khi tốt nghiệp <span>Tiến sĩ quản trị kinh doanh</span> có thể công tác trong các cơ quan, đơn vị thuộc ngành, chuyên ngành được đào tạo sau:  <br>
+                 – Cán bộ lãnh đạo, quản lý cấp cao hoặc cán bộ chuyên môn trong các tổ chức kinh tế xã hội và nghề nghiệp (doanh nghiệp trong nước và quốc tế,….); <br>
+                 – Cố vấn, chuyên gia tư vấn trong lĩnh vực quản trị kinh doanh; <br>
+                 – Cán bộ quản lý, cán bộ chuyên môn trong các cơ quan quản lý nhà nước các cấp;  <br>
+                 – Cán bộ quản lý, cán bộ chuyên môn trong các tổ chức phi chính phủ. <br>
+                 – Nghiên cứu viên, giảng viên tại các viện nghiên cứu và cơ sở giáo dục và đào tạo.   <br>               
+                 <a href="https://hvpnvn.edu.vn/he-dao-tao/thac-si-nganh-quan-tri-kinh-doanh/">Xem thêm </a>
+                </div>         
+                </div>
+            <div id="ctxh" class="box">
+                <div class="grid">
+                    <div class="grid-card">
+                        <h4>Mã ngành đào tạo</h4>
+                        <p>9760101</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Văn bằng tốt nghiệp</h4>
+                        <p>Bằng tiến sĩ</p>
+                    </div>
+                    <div class="grid-card">
+                        <h4>Thời gian đào tạo</h4>
+                        <p>3 năm với bằng thạc sĩ<br>
+                            4 năm với bằng đại học</p>
+                    </div>
+                 </div> 
+                <div class="card">
+                 – Người học sau khi tốt nghiệp có khả năng tự học, tự nghiên cứu, tự cập nhật kiến thức mới về các vấn đề chung của lĩnh vực kinh tế xã hội và các vấn đề đặc thù của ngành Công tác xã hội.  <br>
+                 – <span>Tiến sĩ Công tác xã hội</span> dưới 45 tuổi có khả năng tham gia chương trình nghiên cứu sau tiến sĩ (post-doc) ở các cơ sở đại học quốc tế được xếp thứ hạng cao; tiến sĩ Công tác xã hội dưới 35 tuổi có khả năng tham gia các lớp “đại học hè” nâng cao, cập nhật phương pháp luận và phương pháp nghiên cứu khoa học xã hội. <br>
+                 – Có khả năng tiếp cận với quy trình công việc cụ thể đối với các vị trí được đảm nhận. <br>
+                 – Có khả năng học tập, nghiên cứu và thực hiện các hoạt động để phát triển thành các nhà quản lý hoặc chuyên gia ở các mức độ khác nhau. <br>
+                 Vị trí việc làm của người học sau khi tốt nghiệp<br>
+                 – Nhà quản trị/quản lý công tác xã hội ở các cơ quan quản lí Nhà nước ở các cấp từ trung ương đến địa phương.<br> 
+                 – Chuyên gia, người tự khởi nghiệp trong các lĩnh vực liên quan đến Công tác xã hội. <br>
+                 – Nghiên cứu viên và chuyên gia trong các viện nghiên cứu, trung tâm nghiên cứu về Công tác xã hội và xã hội.<br> 
+                 – Giảng viên, nghiên cứu viên tại các trường đại học, cao đẳng, trung tâm, viện… <br>
+                 – Làm việc trong các tổ chức phi chính phủ, phi lợi nhuận, các trung tâm, dự án phát triển. <br>
+                 – Làm việc ở các đơn vị, tổ chức có liên quan tới các vấn đề xã hội.    <br>              
+                <a href="https://hvpnvn.edu.vn/he-dao-tao/tien-si-nganh-cong-tac-xa-hoi/">Xem thêm </a>
+                </div>
+            </div>
+        </div>
+
+        </div>
+     </section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo-footer"><a href=""><img src="logo hvpnvn trắng.png" alt="Logo"></a></div>
+            <div class="footer-contact">
+                <h3>Liên hệ</h3>
+                <p><i class="fa-solid fa-location-dot"></i> 68 Nguyễn Chí Thanh, Phường Láng, Hà Nội</p>
+                <p><i class="fa-solid fa-phone"></i> Hotline: 024 3775 1705</p>
+                <p><i class="fa-solid fa-envelope"></i> Email: vwa@vwa.edu.vn</p>
+                <p><i class="fa-solid fa-globe"></i> hvpnvn.edu.vn</p>
+            </div>
+            <div class="footer-campus">
+                <h3>Các cơ sở</h3>
+                <p><i class="fa-solid fa-building"></i> Trụ sở chính (Hà Nội): 68 Nguyễn Chí Thanh, P. Láng Thượng, Q. Đống Đa, Hà Nội.</p>
+                <p><i class="fa-solid fa-building"></i> Phân hiệu TP. Hồ Chí Minh: 620 Đỗ Xuân Hợp, P. Phước Long, TP. Hồ Chí Minh.</p>
+                <p><i class="fa-solid fa-building"></i> Cơ sở 3 (Hà Nội).</p>
+            </div>
+            <div class="footer-link">
+                <h3>Trang web</h3>
+                <ul>
+                    <li><a href="Gioithieu.html"><i class="fa-solid fa-circle-info"></i>Giới thiệu</a></li>
+                    <li><a href="Tuyensinh.html"><i class="fa-solid fa-file-signature"></i>Tuyển sinh</a></li>
+                    <li><a href="Daotao.html"><i class="fa-solid fa-graduation-cap"></i>Đào tạo</a></li>
+                    <li><a href="Tintuc.html"><i class="fa-solid fa-newspaper"></i>Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Mạng xã hội</h3>
+                <a href="https://www.facebook.com/Hocvienphunu"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+                <a href="https://www.tiktok.com/@hocvienphunuvietnam"><i class="fa-brands fa-tiktok"></i>Tiktok</a>
+                <a href="https://www.youtube.com/@vietnamwomensacademy8946/featured"><i class="fa-brands fa-youtube"></i>Youtube</a>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>© 2026 Học viện Phụ nữ Việt Nam. All Rights Reserved. LTD</p>
+    </div>
+
+
+<script>
+    // ---- Hamburger nav ----
+    const toggle = document.getElementById('menuToggle');
+    const menu   = document.getElementById('main-menu');
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        const icon = toggle.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-xmark');
+    });
+    // Mobile sub-menu tap
+    if (window.innerWidth <= 768) {
+        document.querySelectorAll('#main-menu > li > a').forEach(link => {
+            const parent = link.parentElement;
+            if (parent.querySelector('.sub-menu')) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    parent.classList.toggle('open-sub');
+                });
+            }
+        });
+    }
+ 
+    // ---- Sidebar: desktop click / mobile toggle ----
+    const menuItems  = document.querySelectorAll('.sidebar li');
+    const boxes      = document.querySelectorAll('.box');
+    const sideToggle = document.getElementById('sidebarToggle');
+    const sideMenu   = document.getElementById('sidebarMenu');
+ 
+    // Toggle button for mobile
+    sideToggle.addEventListener('click', () => {
+        sideMenu.classList.toggle('open');
+        const icon = sideToggle.querySelector('i');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+    });
+ 
+    // Item click
+    menuItems.forEach(item => {
+        item.addEventListener('click', function () {
+            menuItems.forEach(i => i.classList.remove('active'));
+            boxes.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const id = this.getAttribute('data-id');
+            const target = document.getElementById(id);
+            if (target) target.classList.add('active');
+ 
+            // Update toggle label on mobile
+            sideToggle.childNodes[0].textContent = this.textContent + ' ';
+ 
+            // Close sidebar menu on mobile after selection
+            if (window.innerWidth <= 768) {
+                sideMenu.classList.remove('open');
+                const icon = sideToggle.querySelector('i');
+                icon.classList.add('fa-chevron-down');
+                icon.classList.remove('fa-chevron-up');
+            }
+        });
+    });
+ 
+    // ---- Hash-based deep linking (e.g. Daotaodaihoc.html#cntt) ----
+    function openFromHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (!hash) return;
+        const target = document.querySelector(`.sidebar li[data-id="${hash}"]`);
+        if (target) target.click();
+    }
+    window.addEventListener('load', openFromHash);
+    window.addEventListener('hashchange', openFromHash);
+</script>
+
+
+</body>
+</html>
